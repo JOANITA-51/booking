@@ -11,9 +11,9 @@
 
 
 .container::after {
-    content: "";
+    content: "yur";
     opacity: 0.4;
-    background:url("../images/round-table.jpg") no-repeat fixed top;
+    background:url("../images/round-table.jpg") no-repeat ;
     background-blend-mode: luminosity;
     /* also change the blend mode to what suits you, from darken, to other 
     many options as you deem fit*/

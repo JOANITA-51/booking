@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Header from "./components/Header";
 import Home from "./components/Home";
+import Features from './components/Features';
 
 function App() {
   return (
@@ -8,6 +9,9 @@ function App() {
       <Header title = 'Schotrix'/>
       <Home/>
 
+      <Features/>
+
+      
     </div>
   );
 }

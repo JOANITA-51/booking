@@ -5,6 +5,7 @@ import '../components/style/style.css';
 
 const Header = ({title}) => {
     return (
+        
         <header className='header'>
             <Navbar  variant="dark" expand="lg" className="bg-blue">
                 <Container>
