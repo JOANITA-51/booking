@@ -1,9 +1,9 @@
 import React from 'react'
 import { Navbar, Container,Nav,NavDropdown,Button } from 'react-bootstrap';
-import '../components/style/style.css';
+import './NavBar.css';
 
 
-const Header = ({title}) => {
+const NavBar= ({title}) => {
     return (
         
         <header className='header'>
@@ -27,9 +27,9 @@ const Header = ({title}) => {
                     </Navbar.Collapse>
                     <Navbar.Collapse  id="basic-navbar-nav" className="justify-content-end">
                         <Nav >
-                        <Nav.Link href="#SignIn"><Button variant="outline-light">Login In</Button></Nav.Link>
+                        <Nav.Link href="#SignIn"><Button variant="outline-light">Log In</Button></Nav.Link>
                             <Nav.Link href="#SignUp"><Button id="SignUp" variant="outline-light">Sign Up </Button></Nav.Link>
-                            <Nav.Link href="#BookNow"><Button variant="outline-light">Book now</Button></Nav.Link>
+                            <Nav.Link href="#BookNow"><Button variant="outline-light">Book Now</Button></Nav.Link>
 
                         </Nav>
                     </Navbar.Collapse>
@@ -42,4 +42,4 @@ const Header = ({title}) => {
     )
 }
 
-export default Header
+export default NavBar

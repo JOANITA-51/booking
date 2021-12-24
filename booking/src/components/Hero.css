@@ -1,0 +1,21 @@
+.hero-container{
+    background: url("./images/pexels-cup-of-couple-6177633\ Cropped.jpg") center center/cover no-repeat;
+    height: 100vh;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    flex-direction:column;
+    align-items: center;
+    object-fit: contain;
+    
+    
+}
+.hero-container >h1 {
+    position: absolute;
+    margin-top: -240px;
+    
+}
+#SignUp{
+    background-color: #FFC629;
+}
+
