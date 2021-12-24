@@ -1,5 +1,6 @@
 import React from 'react'
-import {Row, Col, Card, Container} from 'react-bootstrap'
+import {Row, Col, Card, Container, Button} from 'react-bootstrap'
+import {Link} from 'react-router-dom';
 import './Steps.css'
 
 function Steps() {
@@ -51,6 +52,12 @@ function Steps() {
                     </Card>
                     </Col>
                 </Row>
+                <div className='text-center' >
+                    <Link to="/sign-up" >
+                        <Button id="SignUp" variant="outline-light" size="lg">Get Started Booking</Button>
+                    </Link>
+                </div>
+
             </Container>
             
         </div>
