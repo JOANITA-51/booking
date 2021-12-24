@@ -1,0 +1,19 @@
+.features__item__link{
+    text-decoration: none;
+    color: #242424;
+
+}
+
+.features__item__img:hover {
+    transform: scale(1.1);
+    transition: all 0.2s linear;
+}
+
+h1 {
+    text-align: center;
+}
+
+.features {
+    padding: 2rem;
+    background: #fff;
+}
