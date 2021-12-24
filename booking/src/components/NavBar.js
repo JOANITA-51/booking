@@ -9,8 +9,8 @@ const NavBar= ({title}) => {
         <header className='header'>
             <Navbar  variant="dark" expand="lg" className="bg-blue">
                 <Container>
-                    <Navbar.Brand href="#home">
-                    <img alt="" src="../components/images/logo s" width="30" height="30" className="d-inline-block align-top" />
+                    <Navbar.Brand href="/">
+                    <img alt="" src="/image/logo-image.ico" height="35px" className="d-inline-block align-top" />
                     {title}.com
                         
                     </Navbar.Brand>
@@ -19,9 +19,9 @@ const NavBar= ({title}) => {
                     <Navbar.Collapse id="basic-navbar-nav"className="justify-content-center">
                         <Nav >
                         <NavDropdown title="Details" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="#action/3.1">Home</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.2">Features</NavDropdown.Item>
-                            <NavDropdown.Item href="#action/3.3">Steps</NavDropdown.Item>
+                            <NavDropdown.Item href="/">Home</NavDropdown.Item>
+                            <NavDropdown.Item href="/features">Features</NavDropdown.Item>
+                            <NavDropdown.Item href="/steps">Steps</NavDropdown.Item>
                     </NavDropdown>
                     </Nav>
                     </Navbar.Collapse>
