@@ -1,5 +1,6 @@
 import React from 'react'
 import Features from '../Features'
+import Footer from '../Footer'
 import Hero from '../Hero'
 import Steps from '../Steps'
 
@@ -9,6 +10,7 @@ function Home() {
           <Hero/>  
           <Features/>
           <Steps/>
+          <Footer/>
         </div>
     )
 }
