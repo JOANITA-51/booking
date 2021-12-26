@@ -3,6 +3,10 @@ import Home from './components/pages/Home';
 import NavBar from './components/NavBar'
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Features from './components/Features';
+import Steps from './components/Steps';
+import LogIn from './components/pages/LogIn';
+import SignUp from './components/pages/SignUp';
+import BookNow from './components/pages/BookNow';
 
 
 function App() {
@@ -13,7 +17,10 @@ function App() {
         <Switch>
           <Route exact path = "/" component = {Home} />
           <Route path = "/features" component = {Features} />
-          <Route path = "/steps" component = {Home} />
+          <Route path = "/steps" component = {Steps} />
+          <Route path ="/log-in" ><LogIn/></Route>
+          <Route path="/sign-up" component={SignUp}/>
+          <Route path="/book-now"  component={BookNow}/>
         </Switch>
       </Router>
      
