@@ -38,7 +38,7 @@ function SignUp() {
             <Button className='ms-5 mb-3' id='SignUp' size='lg'>  Sign Up </Button>
           </Form.Group>
         </Form>
-        
+
         
       </Container>
             

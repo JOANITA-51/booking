@@ -26,3 +26,9 @@ Form{
 #floatingInput,#floatingPassword, #floatingInputGrid{
     background-color: #C4C4C4;
 }
+
+.booking {
+    background-color: #FFC629;
+    color: #fff; 
+    width: 30%;
+}
