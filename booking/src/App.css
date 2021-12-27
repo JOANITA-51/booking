@@ -6,10 +6,23 @@
 
 #main-container{
     background-color: #fff;
-    height:85%;
+    height:90%;
+    width: 80%;
 }
 
 .position-relative{
     z-index: 5;
 }
 
+Form{
+    width :90%;
+}
+
+#LogIn{
+    width: 70%;
+    background-color: #FFC629;
+}
+
+#floatingInput,#floatingPassword{
+    background-color: #C4C4C4;
+}

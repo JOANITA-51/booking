@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Form, Button } from 'react-bootstrap';
+import { Container, Form, Button, FloatingLabel } from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import '../../App.css';
 
@@ -8,25 +8,36 @@ function Login() {
         <div className='log-in d-grid'>
             
             <Container id='main-container' className='mt-5' >
-                <h2 className='mb-4 mt-4 ms-4 fs-1'>Log In</h2>
-                <h5 className='ms-4 fw-normal' >Please Log in </h5>
+                <h2 className='mb-4 mt-4 ms-5 fs-1'>Log In</h2>
+                <h5 className='ms-5 fw-normal' >Please Log in </h5>
                 <hr  />
                 <Form className='d-grid text-center' >
-                    <Form.Group className='mb-4' controlId='sign-in-email'>
+                <FloatingLabel controlId="floatingInput"  label="Email address"  className="mb-3 ms-5 fs-5" >
+                    <Form.Control type="email" placeholder="name@example.com" />
+                </FloatingLabel>
+                <FloatingLabel controlId="floatingPassword" label="Password" className='ms-5 mb-4 fs-5' >
+                    <Form.Control type="password" placeholder="Password" />
+                </FloatingLabel>
+                    {/* <FloatingLabel className='mb-4' controlId='floatingInput' label="Email address">
                         <Form.Control type='email' size='lg' placeholder='Email address' autoComplete='username' className='position-relative '/>
-                    </Form.Group>
-                    <Form.Group  className='mb-4' controlId='sign-in-password'>
+                    </FloatingLabel> */}
+                    {/* <FloatingLabel  className='mb-4' controlId='sign-in-password'>
                         <Form.Control type='password' size='lg' placeholder='Password' autoComplete='current-password' className='position-relative'/>
-                    </Form.Group>
-                    <Form.Group className='d-flex' controlId='remember-me'>
+                    </FloatingLabel> */}
+
+                    <Form.Group className='d-flex mb-4 ms-5 fs-5' controlId='remember-me'>
                         <Form.Check label='Remember me'/>
-                        <p className='ms-5'> Forgot password </p>
+                        <Link to='/sign-up' className='ms-5'> Forgot password </Link>
                     </Form.Group>
-                    <Button>
-                        Log In
-                    </Button>
+
+                    <Form.Group className='d-flex mb-3 ms-5'>
+                        <Button size='lg' id='LogIn'>  Log In </Button>
+                        <Link className='ms-3' to ='/sign-up'>Create an Account</Link>
+                    </Form.Group>
+                   
                 </Form>
-                <Link to ='/sign-up'>Create an Account</Link>
+                
+                <Link className="fs-1 ms-5 text-decoration-none" to ='/'>Home page</Link>
             </Container>
         
         </div>
