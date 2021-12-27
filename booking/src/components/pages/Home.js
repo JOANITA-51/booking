@@ -8,7 +8,7 @@ import NavBar from '../NavBar'
 function Home() {
     return (
         <div>
-          <NavBar title = 'chotrix'/>
+          
           <Hero/>  
           <Features/>
           <Steps/>

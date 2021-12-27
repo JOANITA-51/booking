@@ -23,6 +23,6 @@ Form{
     background-color: #FFC629;
 }
 
-#floatingInput,#floatingPassword{
+#floatingInput,#floatingPassword, #floatingInputGrid{
     background-color: #C4C4C4;
 }

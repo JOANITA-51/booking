@@ -37,7 +37,6 @@ function Login() {
                    
                 </Form>
                 
-                <Link className="fs-1 ms-5 text-decoration-none" to ='/'>Home page</Link>
             </Container>
         
         </div>

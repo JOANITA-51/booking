@@ -7,13 +7,14 @@ import LogIn from './components/pages/LogIn';
 import SignUp from './components/pages/SignUp';
 import BookNow from './components/pages/BookNow';
 import './App.css'
+import NavBar from './components/NavBar';
 
 
 function App() {
   return (
     <div className="App">
       <Router>
-       
+        <NavBar title = 'chotrix'/>
         <Switch>
          
           <Route exact path = "/" component = {Home} />

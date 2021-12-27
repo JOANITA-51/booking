@@ -1,6 +1,7 @@
 import React from 'react'
 import { Navbar, Container,Nav,NavDropdown,Button } from 'react-bootstrap';
 import './NavBar.css';
+import { Link } from 'react-router-dom';
 
 
 const NavBar= ({title}) => {
@@ -19,17 +20,17 @@ const NavBar= ({title}) => {
                     <Navbar.Collapse id="basic-navbar-nav"className="justify-content-center">
                         <Nav >
                         <NavDropdown title="Details" id="basic-nav-dropdown">
-                            <NavDropdown.Item href="/">Home</NavDropdown.Item>
-                            <NavDropdown.Item href="/features">Features</NavDropdown.Item>
-                            <NavDropdown.Item href="/steps">Steps</NavDropdown.Item>
+                            <NavDropdown.Item  className='text-decoration-none' > <Link to = '/'> Home</Link> </NavDropdown.Item>
+                            <NavDropdown.Item  className='text-decoration-none' > <Link to = '/features'> Features</Link> </NavDropdown.Item>
+                            <NavDropdown.Item  className='text-decoration-none'> <Link to = '/steps'>Steps</Link></NavDropdown.Item>
                     </NavDropdown>
                     </Nav>
                     </Navbar.Collapse>
                     <Navbar.Collapse  id="basic-navbar-nav" className="justify-content-end">
                         <Nav >
-                        <Nav.Link href="/log-in"><Button variant="outline-light">Log In</Button></Nav.Link>
-                            <Nav.Link href="/sign-up"><Button id="SignUp" variant="outline-light">Sign Up </Button></Nav.Link>
-                            <Nav.Link href="/book-now"><Button variant="outline-light">Book Now</Button></Nav.Link>
+                        <Nav.Link > <Link to="/log-in"><Button variant="outline-light" >Log In</Button></Link> </Nav.Link>
+                            <Nav.Link ><Link to="/sign-up"><Button id="SignUp" variant="outline-light">Sign Up </Button></Link> </Nav.Link>
+                            <Nav.Link><Link to="/book-now"><Button variant="outline-light" >Book Now</Button></Link> </Nav.Link>
 
                         </Nav>
                     </Navbar.Collapse>
