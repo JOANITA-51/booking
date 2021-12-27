@@ -31,7 +31,7 @@ function Login() {
                     </Form.Group>
 
                     <Form.Group className='d-flex mb-3 ms-5'>
-                        <Button size='lg' id='LogIn'>  Log In </Button>
+                        <Button type='submit' size='lg' id='LogIn'>  Log In </Button>
                         <Link className='ms-3' to ='/sign-up'>Create an Account</Link>
                     </Form.Group>
                    

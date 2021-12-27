@@ -1,7 +1,7 @@
 import React from 'react'
-import { Container, Form, Row, Col, FloatingLabel, Button } from 'react-bootstrap';
-import {Link} from 'react-router-dom';
+import { Container, Form, FloatingLabel, Button } from 'react-bootstrap';
 import '../../App.css';
+import WeatherApp from '../WeatherApp';
 
 function BookNow() {
     return (
@@ -21,20 +21,18 @@ function BookNow() {
                     <FloatingLabel controlId="floatingInput" label="Name of the School" className='ms-5 mb-4 fs-5' >
                         <Form.Control type="text" placeholder="school" />
                     </FloatingLabel>
-                    <FloatingLabel controlId="floatingInput" label="Location of the School" className='ms-5 mb-4 fs-5' >
-                        <Form.Control type="text" placeholder="school" />
-                    </FloatingLabel>
-                    <FloatingLabel controlId="floatingInput" label="Weather at the School" className='ms-5 mb-4 fs-5' >
-                        <Form.Control type="text" placeholder="weather" />
-                    </FloatingLabel>
+                    <WeatherApp/>
+                    
                     <FloatingLabel controlId="floatingInput" label="Facilitation Fee" className='ms-5 mb-4 fs-5' >
                         <Form.Control type="text" placeholder="school" />
                     </FloatingLabel>
+                    <div  >
+                        <Button type='submit' variant="outline-dark" className='ms-5  booking' size = 'lg'>Book Now</Button>
+                        <Button variant="outline-dark" className='ms-5  booking' size = 'lg' >Cancel</Button>
+                    </div>
                 </Form>
-                <div  >
-                    <Button variant="outline-dark" className='ms-5  booking' size = 'lg'>Book Now</Button>
-                    <Button variant="outline-dark" className='ms-5  booking' size = 'lg' >Cancel</Button>
-                </div>
+                
+
             </Container> 
             
             

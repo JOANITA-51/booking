@@ -2,6 +2,7 @@
 .sign-up{
     background-color: #03035B;
     min-height: 100vh;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 #main-container{
@@ -23,7 +24,7 @@ Form{
     background-color: #FFC629;
 }
 
-#floatingInput,#floatingPassword, #floatingInputGrid{
+#floatingInput,#floatingPassword, #floatingInputGrid, #floatingSelect{
     background-color: #C4C4C4;
 }
 
