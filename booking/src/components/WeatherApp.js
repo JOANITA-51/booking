@@ -37,7 +37,7 @@ function WeatherApp() {
         <div>
             <Form.Group className='d-flex mb-3 mt-3'>
             <FloatingLabel controlId="floatingInput" label="Location of the school" className='ms-5 mb-4 fs-5' style={{width:"75%"}} >
-                <Form.Control size="lg" type="text" value={city} onChange={(e) => setCity(e.target.value)} placeholder="Location of the school" />
+                <Form.Control size="lg" type="text" value={city} onChange={(e) => setCity(e.target.value)} name="schoolLocation" />
             </FloatingLabel>
             
                 <Button  size='lg'onClick={()=>{

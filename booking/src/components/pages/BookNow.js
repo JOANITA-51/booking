@@ -13,18 +13,18 @@ function BookNow() {
                 <Form className='text-center' >
                    
                     <FloatingLabel controlId="floatingInput"  label="Date"  className="mb-3 ms-5 fs-5" >
-                        <Form.Control type="date" placeholder="current-date" />
+                        <Form.Control type="date" name="bookingDate" />
                     </FloatingLabel>
                     <FloatingLabel controlId="floatingInput" label="Time" className='ms-5 mb-4 fs-5' >
-                        <Form.Control type="time" placeholder="current-time" />
+                        <Form.Control type="time" name="bookingTime" />
                     </FloatingLabel>
                     <FloatingLabel controlId="floatingInput" label="Name of the School" className='ms-5 mb-4 fs-5' >
-                        <Form.Control type="text" placeholder="school" />
+                        <Form.Control type="text" name="schoolName" />
                     </FloatingLabel>
                     <WeatherApp/>
                     
                     <FloatingLabel controlId="floatingInput" label="Facilitation Fee" className='ms-5 mb-4 fs-5' >
-                        <Form.Control type="text" placeholder="school" />
+                        <Form.Control type="text" name="schoolFee" />
                     </FloatingLabel>
                     <div  >
                         <Button type='submit' variant="outline-dark" className='ms-5  booking' size = 'lg'>Book Now</Button>
