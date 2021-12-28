@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Form, Button, FloatingLabel } from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import '../../App.css';
+import Submit from './Submit';
 
 function Login() {
     return (
@@ -31,7 +32,7 @@ function Login() {
                     </Form.Group>
 
                     <Form.Group className='d-flex mb-3 ms-5'>
-                        <Button type='submit' size='lg' id='LogIn'>  Log In </Button>
+                        <Link to='/book-now'><Button type='submit' size='lg' id='LogIn'>  Log In </Button></Link>
                         <Link className='ms-3' to ='/sign-up'>Create an Account</Link>
                     </Form.Group>
                    
