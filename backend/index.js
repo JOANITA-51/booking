@@ -1,12 +1,15 @@
 const express = require('express');
 const bodyParser = require ('body-parser');
 const mongoose = require('mongoose');
+const routesHandler = require('./routes/handler.js');
+
 
 require('dotenv').config();
 
 const app = express();
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json);
+// app.use('/', routesHandler)
 
 //DB connection
 mongoose.connect(process.env.DB_URI, {useNewUrlParser: true})
