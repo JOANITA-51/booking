@@ -10,7 +10,7 @@ function BookNow() {
                 <h2 className='mb-4 mt-4 ms-5 fs-1'>Booking</h2>
                 <h5 className='ms-5 fw-normal' >Please fill in this booking information</h5>
                 <hr  />
-                <Form className='text-center' method='post' action='/addPreference' >
+                <Form className='text-center' method='post' action='http://localhost:3003/addPreference' >
 
                     <FloatingLabel controlId="floatingInput"  label="Full Name"  className="mb-3 ms-5 fs-5" >
                         <Form.Control type="text" name="user" />

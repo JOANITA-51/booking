@@ -10,6 +10,7 @@ routerPreference.get('/preferences', (req,res) => {
                 'result':'sucess',
                 'preferences':allPreferences
             })
+            res.end()
         return res.json({
             'result':'success',
             'preferences':[]
@@ -20,6 +21,7 @@ routerPreference.get('/preferences', (req,res) => {
             'result':'error',
             'message':'Error while getting Preferences'
         })
+        res.end()
     }
 })
 

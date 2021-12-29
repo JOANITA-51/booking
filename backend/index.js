@@ -41,6 +41,7 @@ app.post('/addPreference', async(req,res)=>{
                 'message':'successful',
                 'preference':preference
             })
+            res.end()
         }
     }catch(error){
         console.log(error)
