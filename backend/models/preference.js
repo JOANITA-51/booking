@@ -6,13 +6,13 @@ const preferenceSchema = mongoose.Schema({
     bookingTime:{type:String, required:true},
     schoolName:{type:String, required:true},
     schoolLocation:{type:String, required:true},
-    schoolFee:{type:String, required:true},
-    user:{type:Schema.Types.ObjectId, ref:'users'} //referencing the id from the users collection
+    schoolFee:{type:String},
+    user:{type:String} //referencing the id from the users collection
 
 });
 
 preferenceSchema.statics.getPreferences = (user = null) => {
-    return user !== null? preference.find({user:user}).populated("user") :preference.find({}).populated("user")
+    return user !== null? preference.find({user:user}):preference.find({})
 }
 
 preferenceSchema.statics.getPreference = (preferenceId)=>{

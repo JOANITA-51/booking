@@ -3,8 +3,9 @@ const bodyParser = require ('body-parser');
 const mongoose = require('mongoose');
 const User = require('./models/user');
 const Preference = require('./models/preference')
-const routerUser = require('./routes/user')
-const routerPreference = requiire('./routes/preference')
+const routerUser = require('./routes/user');
+const preference = require('./models/preference');
+const routerPreference = require('./routes/preference')
 
 require('dotenv').config();
 
@@ -28,8 +29,26 @@ app.get('/', (req, res)=>{
 app.use('/users', routerUser);
 app.use('/preference',routerPreference);
 
-app.post('/login', async(req,res)=>{
-    
+app.post('/addPreference', async(req,res)=>{
+    const {bookingDate, bookingTime, schoolName, schoolLocation, schoolFee } = req.body
+    try{
+        const preference = new Preference({bookingDate, bookingTime, schoolName, schoolLocation, schoolFee});
+        await preference.save()
+        console.log(req.body)
+        if(preference !== null){
+            res.json({
+                'result' : 'success',
+                'message':'successful',
+                'preference':preference
+            })
+        }
+    }catch(error){
+        console.log(error)
+        return res.json({
+            'result':'failed'
+        })
+    }
+
 })
 
 app.post('/register', async (req,res)=>{

@@ -7,7 +7,7 @@ const userSchema = mongoose.Schema({
     password:{type:String, required:true},
 });
 
-userSchema.statistics.getUser = async (email) =>{
+userSchema.statics.getUser = async (email) =>{
     const User = await user.findOne({email:email});
     return{
         id:User._id,

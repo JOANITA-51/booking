@@ -1,6 +1,6 @@
-const express = require('express');
+/*const express = require('express');
 const router = express.Router();
-const Schema = require ('../models/Schema');
+const Schema = require ('../models/Schema'); */
 
 /* Adding a user with code
 router.get('/addUser', async(req,res)=>{
@@ -17,7 +17,7 @@ router.get('/addUser', async(req,res)=>{
         console.log(error)
         res.end('User not added');
     }
-}); */
+}); 
 
 //Retrieving from the preference collection
 router.get('/preferences', async(req,res)=>{
@@ -52,7 +52,7 @@ router.post('/addPreference', async(req,res)=>{
 
     try{
         await newPrefence.save((err, newPrefence)=>{
-            if(err) res.end ('err seving');
+            if(err) res.end ('err serving');
             res.redirect('/book-now');
             res.end();
         });
@@ -61,4 +61,4 @@ router.post('/addPreference', async(req,res)=>{
         res.redirect('./book-now');
         res.end();
     }
-})
+}) */

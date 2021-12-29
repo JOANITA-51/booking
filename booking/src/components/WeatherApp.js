@@ -41,7 +41,7 @@ function WeatherApp() {
             </FloatingLabel>
             
                 <Button  size='lg'onClick={()=>{
-                getWeatherData(city)}}>GET WEATHER INFO</Button>
+                getWeatherData(city)}}>WEATHER INFO</Button>
             </Form.Group>
             
             <Container className='ms-5 pt-3 pb-3 mb-3 text-center'

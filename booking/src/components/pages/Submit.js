@@ -1,9 +1,38 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react';
 import { Alert } from 'react-bootstrap'
+import BookNow from './BookNow';
+
 
 function Submit() {
+    useEffect ( () => {
+        fetchItems();
+    }, [] );
+
+    const [items, setItems] = useState([]);
+
+    const fetchItems = async () =>{
+        const data = await fetch('/preferences');
+        const items = await data.json();
+        setItems(items)
+    }
     return (
         <div>
+            {/* <BookNow/> */}
+            
+                
+                    {items.user.firstName}
+                    {items.user.lastName}
+                    {items.user.email}
+                    {items.preference.bookingDate}
+                    {items.preference.bookingTime}
+                    {items.preference.schoolName}
+                    {items.preference.schoolLocation}
+                    {items.preference.schoolFee}
+
+                              
+            
+
+            
             {/* <Alert variant="success">
                 <Alert.Heading>Form Submitted !!</Alert.Heading>
                 <p>Thank you for booking , Here is what we got from you</p>

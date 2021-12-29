@@ -2,7 +2,7 @@ const {Router} = require('express');
 const routerPreference = Router();
 const {getPreference, getPreferences} = require('../controllers/preference');
 
-routerPreference.get('/', (req,res) => {
+routerPreference.get('/preferences', (req,res) => {
     try{
         const allPreferences = getPreferences();
         if (allPreferences?.length > 0)
@@ -23,7 +23,7 @@ routerPreference.get('/', (req,res) => {
     }
 })
 
-routerPreference.get('/:user',(req,res)=>{
+routerPreference.get('/preferences/:user',(req,res)=>{
     const {user} = req.params;
 
     try{
@@ -43,6 +43,27 @@ routerPreference.get('/:user',(req,res)=>{
         return res.json({
             'result':'error',
             'message':'Error while getting Preferences'
+        })
+    }
+})
+
+routerPreference.get('/preference', (req,res) => {
+    try{
+        const preference= getPreference();
+        if (preference?.length > 0)
+            return res.json({
+                'result':'sucess',
+                'preference':preference
+            })
+        return res.json({
+            'result':'success',
+            'preferences':[]
+        })
+    } catch(error){
+        console.log(error)
+        return res.json({
+            'result':'error',
+            'message':'Error while getting your Preference'
         })
     }
 })
