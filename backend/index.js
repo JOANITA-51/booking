@@ -36,12 +36,12 @@ app.post('/addPreference', async(req,res)=>{
         await preference.save()
         console.log(req.body)
         if(preference !== null){
-            res.json({
-                'result' : 'success',
-                'message':'successful',
-                'preference':preference
-            })
-            res.end()
+            // res.json({
+            //     'result' : 'success',
+            //     'message':'successful',
+            //     'preference':preference
+            // })
+            res.end(JSON.stringify(preference))
         }
     }catch(error){
         console.log(error)
