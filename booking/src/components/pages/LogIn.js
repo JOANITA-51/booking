@@ -2,7 +2,6 @@ import React from 'react';
 import { Container, Form, Button, FloatingLabel } from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import '../../App.css';
-import Submit from './Submit';
 
 function Login() {
     return (

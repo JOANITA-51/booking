@@ -1,10 +1,9 @@
-const { Timestamp } = require('mongodb');
 const mongoose = require('mongoose');
 
 const preferenceSchema = mongoose.Schema({
     createdAt: {type: Date, default:Date.now() },
     bookingDate:{type:Date, required:true},
-    bookingTime:{type:Timestamp, required:true},
+    bookingTime:{type:String, required:true},
     schoolName:{type:String, required:true},
     schoolLocation:{type:String, required:true},
     schoolFee:{type:String},

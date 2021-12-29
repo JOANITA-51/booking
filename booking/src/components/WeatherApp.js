@@ -6,8 +6,7 @@ import {Form, Button, Container, FloatingLabel} from 'react-bootstrap';
 function WeatherApp() {
     const [weatherInfo, setWeatherInfo] = useState({});
     const [city, setCity] = useState(" ");
-    const [temperature, setTemperature] = useState(" ");
-    
+       
     function getWeatherData (city){
     // async function getWeatherData (city){
     //     const response = await fetch(`http://api.weatherapi.com/v1/forecast.json?key=4b35053d60374d68bd8133610212210&q=${city}&days=1&aqi=yes&alerts=yes`)
