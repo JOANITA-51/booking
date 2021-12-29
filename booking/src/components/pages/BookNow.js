@@ -11,6 +11,10 @@ function BookNow() {
                 <h5 className='ms-5 fw-normal' >Please fill in this booking information</h5>
                 <hr  />
                 <Form className='text-center' method='post' action='/addPreference' >
+
+                    <FloatingLabel controlId="floatingInput"  label="Full Name"  className="mb-3 ms-5 fs-5" >
+                        <Form.Control type="text" name="user" />
+                    </FloatingLabel>
                    
                     <FloatingLabel controlId="floatingInput"  label="Date"  className="mb-3 ms-5 fs-5" >
                         <Form.Control type="date" name="bookingDate" />
