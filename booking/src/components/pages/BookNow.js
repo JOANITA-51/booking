@@ -7,7 +7,7 @@ function BookNow() {
     return (
         <div className='book-now d-grid'>
             <Container id='main-container' className='h-100 mt-5' >
-                <h2 className='mb-4 mt-4 ms-5 fs-1'>Booking</h2>
+                <h2 className='mb-4 mt-4 ms-5 fs-1'>Book Now</h2>
                 <h5 className='ms-5 fw-normal' >Please fill in this booking information</h5>
                 <hr  />
                 <Form className='text-center' method='post' action='http://localhost:3003/addPreference' >
@@ -16,7 +16,7 @@ function BookNow() {
                         <Form.Control type="text" name="user" />
                     </FloatingLabel>
                    
-                    <FloatingLabel controlId="floatingInput"  label="Date"  className="mb-3 ms-5 fs-5" >
+                    <FloatingLabel controlId="floatingInput"  label=" Date"  className="mb-3 ms-5 fs-5" >
                         <Form.Control type="date" name="bookingDate" />
                     </FloatingLabel>
                     <FloatingLabel controlId="floatingInput" label="Time" className='ms-5 mb-4 fs-5' >

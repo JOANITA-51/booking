@@ -59,8 +59,9 @@ function Submit() {
                 </li>
             </ul>
 
-            <Button variant="success">Confirm Booking</Button>{' '}
-            <Button variant="warning">Edit Booking</Button>{' '} */}
+            <Link to="/log-in"> <Button variant="success">Confirm Booking</Button> </Link>{' '}
+            <Link to="/log-in"> <Button variant="warning">Edit Booking</Button> </Link>{' '}
+            <Link to="/log-in"> <Button variant="warning">Set Reminder</Button> </Link>{' '} */}
         </div>
     )
 }

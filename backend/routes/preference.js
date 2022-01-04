@@ -5,12 +5,11 @@ const {getPreference, getPreferences} = require('../controllers/preference');
 routerPreference.get('/preferences', (req,res) => {
     try{
         const allPreferences = getPreferences();
-        if (allPreferences?.length > 0)
-            return res.json({
-                'result':'sucess',
-                'preferences':allPreferences
-            })
-            res.end()
+        if (allPreferences?.length > 0){
+            res.end(JSON.stringify(allPreferences))
+        }
+
+            
         return res.json({
             'result':'success',
             'preferences':[]

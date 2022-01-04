@@ -19,7 +19,7 @@ function Features() {
                     <Col>
                         <FeatureItem                        
                             src = "/image/connection.ico"
-                            heading = "Connection"
+                            heading = "Hook up"
                             text='Easily connect and relate with the school staff '
                             path = '/sign-up'
                         />  
@@ -30,7 +30,7 @@ function Features() {
                      <Col>
                         <FeatureItem                        
                             src = "/image/back-in-time.ico"
-                            heading = "Time-saving"
+                            heading = "Timeless"
                             text='Spend less time while booking for a school appointment'
                             path = '/sign-up'
                         /> 
@@ -38,7 +38,7 @@ function Features() {
                     <Col>
                         <FeatureItem                        
                             src = "/image/text-message.ico"
-                            heading = "Notification "
+                            heading = "Free Reminder "
                             text='Get a reminder via email and the booking information whenever a school appointment is booked'
                             path = '/sign-up'
                         />
@@ -58,8 +58,8 @@ function Features() {
                         
                         <FeatureItem                        
                             src = "/image/api.ico"
-                            heading = "Integration and API"
-                            text='Know the school location and the weather condition for the booked appointment time'
+                            heading = "Weather"
+                            text='Know the weather condition for the booked appointment time'
                             path = '/sign-up'
                         />
                     </Col>

@@ -53,7 +53,8 @@ function SignUp() {
           <h2 className='mb-4 mt-4 ms-4 fs-1'>Sign UP</h2>
           <h5 className='ms-4 fw-normal' >Please fill in this form to create an account</h5>
           <hr  />
-          <Form className='text-center' noValidate onSubmit={handleSubmit}>
+          {/* <Form className='text-center' noValidate onSubmit={handleSubmit} method ='post' action='http://localhost:3003/register'> */}
+          <Form className='text-center' method ='post' action='http://localhost:3003/register'>
             <Row className="g-2">
               <Col md>
                 <Form.Group controlId="validationFormik01">
@@ -97,8 +98,9 @@ function SignUp() {
             <Form.Group className='d-flex mb-4 ms-5 fs-5' controlId='remember-me'>
               <Form.Check  required name="term" onChange={handleChange} isInvalid={!!errors.term} label='I accept the' feedback={errors.terms} feedbackType="invalid" id="validationFormik106"
 /><Link className='me-2 ms-2' to = '/'>Terms Of Use </Link> and <Link className='ms-2' to = '/'> Privacy Policy </Link>
-              <Button type='submit' className='ms-5 mb-3' id='SignUp' size='lg'>  Sign Up </Button>
+              
             </Form.Group>
+            <Button type='submit' className='ms-5 mb-3' id='SignUp' size='lg'>  Sign Up </Button>
           </Form>
 
           

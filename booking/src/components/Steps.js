@@ -23,30 +23,32 @@ function Steps() {
                     <Card>
                         <Card.Body>
                             <h5 className='dot'>2</h5>
-                            <Card.Title>  Get started with booking a school appointment</Card.Title>
-
-                            
-                        </Card.Body>
-                    </Card>
-                    </Col>
-                </Row>
-
-                <Row>
-                    <Col>
-                    <Card>
-                        <Card.Body>
-                            <h5 className='dot'>3</h5>
-                            <Card.Title>  Fill in the booking details i.e appropriate time and school</Card.Title>
+                            <Card.Title>  Fill in the booking details</Card.Title>
     
                         </Card.Body>
                     </Card>
                     </Col>
 
+                </Row>
+
+                <Row>
+
+                    <Col>
+                    <Card>
+                        <Card.Body>
+                            <h5 className='dot'>3</h5>
+                            <Card.Title>Confirm booking </Card.Title>
+
+                        </Card.Body>
+                    </Card>
+                    </Col>
+
+                    
                     <Col>
                     <Card>
                         <Card.Body>
                             <h5 className='dot'>4</h5>
-                            <Card.Title>Confirm your booking information and set a reminder</Card.Title>
+                            <Card.Title>Set a reminder </Card.Title>
 
                         </Card.Body>
                     </Card>

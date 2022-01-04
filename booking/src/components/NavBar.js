@@ -28,9 +28,10 @@ const NavBar= ({title}) => {
                     </Navbar.Collapse>
                     <Navbar.Collapse  id="basic-navbar-nav" className="justify-content-end">
                         <Nav >
+                        <Nav.Link><Link to="/book-now"><Button variant="outline-light" >Book Now</Button></Link> </Nav.Link>
                         <Nav.Link > <Link to="/log-in"><Button variant="outline-light" >Log In</Button></Link> </Nav.Link>
-                            <Nav.Link ><Link to="/sign-up"><Button id="SignUp" variant="outline-light">Sign Up </Button></Link> </Nav.Link>
-                            <Nav.Link><Link to="/book-now"><Button variant="outline-light" >Book Now</Button></Link> </Nav.Link>
+                        <Nav.Link ><Link to="/sign-up"><Button id="SignUp" variant="outline-light">Sign Up </Button></Link> </Nav.Link>
+                      
 
                         </Nav>
                     </Navbar.Collapse>

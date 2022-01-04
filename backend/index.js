@@ -21,10 +21,17 @@ mongoose.connect(process.env.DB_URI, {useNewUrlParser: true})
 const PORT = process.env.PORT||4000;
 const app = express();
 app.use(bodyParser.urlencoded({extended:false}));
-app.use(bodyParser.json);
-app.get('/', (req, res)=>{
-    res.send('Welcome!!')
-})
+app.use(bodyParser.json());
+app.get('/', async(req, res)=>{
+    // res.send ('Welcome!!')
+    try{
+        const users = await User.find();
+        res.json(users)
+    }catch{
+        res.json('opps!')
+    }
+});
+
 
 app.use('/users', routerUser);
 app.use('/preference',routerPreference);
@@ -53,22 +60,25 @@ app.post('/addPreference', async(req,res)=>{
 })
 
 app.post('/register', async (req,res)=>{
-    const {firstName, lastName, email, password} = req.body
+    // const {firstName, lastName, email, password} = req.body
+   
     try{
-        const user = new User({firstName, lastName, email, password});
-        await user.save()
-        console.log(req.body)
-        if (user !== null){
-            res.json({
-                'result':'success',
-                'message':'Register Successful',
-                'user':user
-            })
-        }
-        return res.json({
-            'result':'failure',
-            'message':'Register failed'
-        });
+        const user = await new User({
+            firstName : req.body.firstName,
+            lastName:req.body.lastName,
+            email:req.body.email, 
+            password: req.body.password});
+         user.save()
+         .then (()=>res.json({message: user}))
+         .catch(err=>res.json({message: err.message}))
+        // console.log(req.body)
+        // if (user !== null){
+        //     res.end(JSON.stringify(user))
+        // }
+        // return res.json({
+        //     'result':'failure',
+        //     'message':'Register failed'
+        // });
     } catch (error){
         console.log(error)
         return res.json({
