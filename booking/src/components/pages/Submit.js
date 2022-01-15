@@ -11,7 +11,7 @@ function Submit() {
     const [items, setItems] = useState([]);
 
     const fetchItems = async () =>{
-        const data = await fetch('http://localhost:3003/preferences');
+        const data = await fetch('http://localhost:3003/addPreference');
         const items = await data.json();
         setItems(items)
     }
