@@ -1,25 +1,32 @@
 import React, {useEffect, useState} from 'react';
+import { useParams } from 'react-router-dom';
 import { Alert } from 'react-bootstrap'
 import BookNow from './BookNow';
 
 
 function Submit() {
-    useEffect ( () => {
-        fetchItems();
-    }, [] );
+    const {id} = useParams();
+    const [items, setItems] = useState({});
+    // useEffect ( () => {
+    //     fetchItems();
+    // }, [] );
 
-    const [items, setItems] = useState([]);
-
+    console.log(id)
     const fetchItems = async () =>{
-        const data = await fetch('http://localhost:3003/addPreference');
-        const items = await data.json();
+
+        const response = await fetch(`http://localhost:3003/submitPreference/`);
+        const items = response.data;
         setItems(items)
     }
+    console.log(items)
     return (
         <div>
+            {/* <h1>{items.schoolLocation}</h1> */}
+            <h2>Thanks for submitting</h2>
             {/* <BookNow/> */}
             
-                
+            
+{/*                 
                     {items.user.firstName}
                     {items.user.lastName}
                     {items.user.email}
@@ -27,7 +34,7 @@ function Submit() {
                     {items.preference.bookingTime}
                     {items.preference.schoolName}
                     {items.preference.schoolLocation}
-                    {items.preference.schoolFee}
+                    {items.preference.schoolFee} */}
 
                               
             

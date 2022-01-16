@@ -6,6 +6,9 @@ const Preference = require('./models/preference')
 const routerUser = require('./routes/user');
 const preference = require('./models/preference');
 const routerPreference = require('./routes/preference')
+const cors = require('cors');
+const ObjectId  = require('mongodb').ObjectID;
+
 
 require('dotenv').config();
 
@@ -22,6 +25,7 @@ const PORT = process.env.PORT||4000;
 const app = express();
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
+app.use(cors());
 app.get('/', async(req, res)=>{
     // res.send ('Welcome!!')
     try{
@@ -32,6 +36,28 @@ app.get('/', async(req, res)=>{
     }
 });
 
+app.get('/submitPreference', async(req, res)=>{
+    try{
+        const preferences = await Preference.find();
+        res.json(preferences)
+
+    }catch(error){
+        res.json(error)
+    }
+})
+
+app.get('/submitPreference/:id', async(req, res)=>{
+    try{
+        const {id}= req.params
+        const preferences = await Preference.findOne({_id: ObjectId(id)}
+        );
+        res.json(preferences)
+
+    }catch(error){
+        res.json({message: error.message})
+    }
+})
+
 
 app.use('/users', routerUser);
 app.use('/preference',routerPreference);
@@ -40,8 +66,10 @@ app.post('/addPreference', async(req,res)=>{
     const {bookingDate, bookingTime, schoolName, schoolLocation, schoolFee } = req.body
     try{
         const preference = new Preference({bookingDate, bookingTime, schoolName, schoolLocation, schoolFee});
-        await preference.save()
-        console.log(req.body)
+        return await preference.save()
+            .then(()=>{res.json(preference)})
+            .catch(err=>res.json({message:err.message}))
+        
         if(preference !== null){
             // res.json({
             //     'result' : 'success',
@@ -50,10 +78,11 @@ app.post('/addPreference', async(req,res)=>{
             // })
             res.end(JSON.stringify(preference))
         }
+    
     }catch(error){
         console.log(error)
         return res.json({
-            'result':'failed'
+            'result':'cancelled'
         })
     }
 

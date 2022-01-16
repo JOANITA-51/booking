@@ -8,6 +8,7 @@ import SignUp from './components/pages/SignUp';
 import BookNow from './components/pages/BookNow';
 import './App.css'
 import NavBar from './components/NavBar';
+import Submit from './components/pages/Submit'
 
 
 function App() {
@@ -23,6 +24,8 @@ function App() {
           <Route path ="/log-in" component = {LogIn} />
           <Route path="/sign-up" component={SignUp}/>
           <Route path="/book-now"  component={BookNow}/>
+          <Route path="/submit/:id" ><Submit /></Route>
+          
         </Switch>
       </Router>
      
