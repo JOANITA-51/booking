@@ -1,16 +1,24 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { Container, Form, FloatingLabel, Button } from 'react-bootstrap';
 import '../../App.css';
-import WeatherApp from '../WeatherApp';
 import axios from "axios";
 import { useState } from 'react';
-import {useHistory , Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
+import { withRouter, useHistory } from "react-router-dom";
 
+const BookNow = ()=> {
 
-function BookNow() {
-    const history = useHistory;
+    let history = useHistory();
     const [data, setData] = useState({})
+    //fetch data
     const [resdata , setResdata] = useState({})
+
+    useEffect(()=>{
+       
+       // history.push(`/submit/${resdata._id}`)
+
+    },[resdata])
+
     const bookSubmit=(event) => {
         event.preventDefault();
         axios.post(
@@ -24,8 +32,9 @@ function BookNow() {
             }
         )
         .catch((error)=>{
-            console.log('Charles');
+            console.log('An error has occurred');
         })
+
 
         
     }
@@ -52,7 +61,7 @@ function BookNow() {
         
     const {country, region, temp_c,text, icon} = weatherInfo   
     return (
-        <div className='book-now d-grid'>
+         <div className='book-now d-grid'>
             <Container id='main-container' className='h-100 mt-5' >
                 <h2 className='mb-4 mt-4 ms-5 fs-1'>Book Now</h2>
                 <h5 className='ms-5 fw-normal' >Please fill in this booking information</h5>
@@ -106,14 +115,10 @@ function BookNow() {
                     </div>
                 </Form>
 
-                {resdata._id &&  <Button variant="outline-dark" className='ms-5  booking' size = 'lg' > <Link to = {`/submit/${resdata._id}`}>check</Link></Button>}
-
-               
+                {resdata._id &&  <Button variant="outline-dark" className='ms-5  booking' size = 'lg' > <Link to =  {`/submit/${resdata._id}` }state={{data}} >check</Link></Button>}
 
             </Container> 
-           
-            
-            
+             
         </div>
             
         
@@ -121,4 +126,4 @@ function BookNow() {
 }
 
 
-export default BookNow
+export default  BookNow;

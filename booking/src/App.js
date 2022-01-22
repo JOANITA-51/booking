@@ -10,7 +10,6 @@ import './App.css'
 import NavBar from './components/NavBar';
 import Submit from './components/pages/Submit'
 
-
 function App() {
   return (
     <div className="App">
@@ -23,7 +22,7 @@ function App() {
           <Route path = "/steps" component = {Steps} />
           <Route path ="/log-in" component = {LogIn} />
           <Route path="/sign-up" component={SignUp}/>
-          <Route path="/book-now"  component={BookNow}/>
+          <Route path="/book-now"  component={BookNow} exact/>
           <Route path="/submit/:id" ><Submit /></Route>
           
         </Switch>
