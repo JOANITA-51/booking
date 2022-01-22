@@ -20,3 +20,5 @@ GET http://localhost:3003/submitPreference
 ###
 GET http://localhost:3003/submitPreference/61cb6a59d6a72f5dd3b6c541
 
+###
+GET http://localhost:3003/login

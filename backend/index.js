@@ -8,6 +8,14 @@ const preference = require('./models/preference');
 const routerPreference = require('./routes/preference')
 const cors = require('cors');
 const ObjectId  = require('mongodb').ObjectID;
+var passport = require("passport");
+var LocalStrategy = require("passport-local");
+var passportLocalMongoose = require("passport-local-mongoose");
+const logger = (req, res, next) => {
+    Console.log(`${req.method} ${req.protocol}://${req.get('host')}${req.priginalUrl}`)
+    next();
+}
+
 
 
 require('dotenv').config();
@@ -26,6 +34,16 @@ const app = express();
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 app.use(cors());
+app.use(require("express-session")({
+    secret: "node js mongodb",
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+// passport.use(new LocalStrategy(User.authenticate()));
+// passport.serializeUser(User.serializeUser());
+// passport.deserializeUser(User.deserializeUser());
 app.get('/', async(req, res)=>{
     // res.send ('Welcome!!')
     try{
@@ -43,6 +61,19 @@ app.get('/submitPreference', async(req, res)=>{
 
     }catch(error){
         res.json(error)
+    }
+})
+
+
+app.get('/login/:email', async(req, res)=>{
+    try{
+        const {email}= req.params
+        const details = await Preference.findOne({email:email}
+        );
+        res.json(details)
+
+    }catch(error){
+        res.json({message: error.message})
     }
 })
 
@@ -137,6 +168,16 @@ app.patch('/users/:id', (req,res)=>{
         res.send(`User ${id} not found`)
     }
 })
+
+//Showing login form
+app.get("/login", function (req, res) {
+    res.render('login', {
+    title: 'Login',
+    email: '',
+    password: ''     
+    })
+});
+
 
 
 

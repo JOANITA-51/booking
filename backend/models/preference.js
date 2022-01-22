@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 const preferenceSchema = mongoose.Schema({
     createdAt: {type: Date, default:Date.now() },
+    user:{type:String},
     bookingDate:{type:Date, required:true},
     bookingTime:{type:String, required:true},
     schoolName:{type:String, required:true},
