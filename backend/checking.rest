@@ -2,10 +2,10 @@ POST http://localhost:3003/register
 content-type: application/json
 
 {
-    "firstName": "Joanita",
-    "lastName": "Nakityo",
-    "email": "anita@gmail.com",
-    "password": "1234"
+    "firstName": "Maria",
+    "lastName": "Agatha",
+    "email": "mariaagatha@gmail.com",
+    "password": "123456"
 
 }
 
@@ -21,4 +21,10 @@ GET http://localhost:3003/submitPreference
 GET http://localhost:3003/submitPreference/61cb6a59d6a72f5dd3b6c541
 
 ###
-GET http://localhost:3003/login
+POST http://localhost:3003/login
+Content-Type: application/json
+
+{
+    "email":"mariaagatha@gmail.com",
+    "password":"123456"
+}

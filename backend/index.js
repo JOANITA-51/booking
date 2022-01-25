@@ -3,20 +3,27 @@ const bodyParser = require ('body-parser');
 const mongoose = require('mongoose');
 const User = require('./models/user');
 const Preference = require('./models/preference')
-const routerUser = require('./routes/user');
-const preference = require('./models/preference');
-const routerPreference = require('./routes/preference')
 const cors = require('cors');
 const ObjectId  = require('mongodb').ObjectID;
-var passport = require("passport");
-var LocalStrategy = require("passport-local");
-var passportLocalMongoose = require("passport-local-mongoose");
-const logger = (req, res, next) => {
-    Console.log(`${req.method} ${req.protocol}://${req.get('host')}${req.priginalUrl}`)
+const jwt = require('jsonwebtoken');
+const ErrorResponse = require('./utils/ErrorResponse');
+const getSignedJwtToken = id =>{
+    return jwt.sign({id}, `${process.env.JWT_KEY}`,{
+        expiresIn:"1h"
+    })
+}
+const token = getSignedJwtToken(User.id);
+/*
+const router = require('./routes/user');
+const routerPreference = require('./routes/preference')
+const auth = require('./routes/auth');
+const logger = (req,res,next)=>{
+    console.log(`${req.method}${req.protocol}://${req.get('host')}${req.originalUrl}`)
+
     next();
 }
 
-
+*/
 
 require('dotenv').config();
 
@@ -34,16 +41,15 @@ const app = express();
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 app.use(cors());
-app.use(require("express-session")({
-    secret: "node js mongodb",
-    resave: false,
-    saveUninitialized: false
-}));
-app.use(passport.initialize());
-app.use(passport.session());
-// passport.use(new LocalStrategy(User.authenticate()));
-// passport.serializeUser(User.serializeUser());
-// passport.deserializeUser(User.deserializeUser());
+
+/*
+app.use('/auth', auth)
+app.use('/user',router)
+app.use(logger)
+app.use('/users', router);
+app.use('/preference',routerPreference);
+*/
+
 app.get('/', async(req, res)=>{
     // res.send ('Welcome!!')
     try{
@@ -53,6 +59,74 @@ app.get('/', async(req, res)=>{
         res.json('opps!')
     }
 });
+
+//For the  signup button
+app.post('/register', async (req,res)=>{
+    // const {firstName, lastName, email, password} = req.body
+   
+    try{
+        const user = await new User({
+            firstName : req.body.firstName,
+            lastName:req.body.lastName,
+            email:req.body.email, 
+            password: req.body.password});
+         user.save()
+         .then (()=>res.json({message: user}))
+         .catch(err=>res.json({message: err.message}))
+
+    } catch (error){
+        console.log(error)
+        return res.json({
+            'result':'failure',
+            'message':'Maybe the email is already taken',
+            'Description':'Register failed'
+        })
+
+    }
+})
+
+//For the login button
+app.post('/login', async (req,res,next)=>{
+    const {email, password} = req.body;
+
+    try {
+         //Validate email  & password
+        if(!(email || password)){
+            return next (new ErrorResponse('user does not exist', 400));
+    
+        }
+    
+        //Check for user
+        const user = await User.findOne({email}).select('+password');
+        if(!user){
+            return next(new ErrorResponse('invalid credentials', 401))
+        }
+    
+        //Check if password matches
+        const isMatch = await user.matchPassword(password);
+        if(!isMatch){
+            return next(new ErrorResponse('Invalid credentials', 401))
+        }
+    
+    }
+    catch (error) {
+        return res.status(500).json({err:error.message})
+            
+    }
+
+    const token = jwt.sign({_id: User._id}, `${process.env.JWT_KEY}`);
+
+    res.cookie('t');
+
+    const {_id, firstName} = User;
+    return res.json({token, user : {
+
+        email:req.body.email, 
+        _id, firstName
+    }
+    });
+
+})
 
 app.get('/submitPreference', async(req, res)=>{
     try{
@@ -64,18 +138,6 @@ app.get('/submitPreference', async(req, res)=>{
     }
 })
 
-
-app.get('/login/:email', async(req, res)=>{
-    try{
-        const {email}= req.params
-        const details = await Preference.findOne({email:email}
-        );
-        res.json(details)
-
-    }catch(error){
-        res.json({message: error.message})
-    }
-})
 
 app.get('/submitPreference/:id', async(req, res)=>{
     try{
@@ -90,8 +152,7 @@ app.get('/submitPreference/:id', async(req, res)=>{
 })
 
 
-app.use('/users', routerUser);
-app.use('/preference',routerPreference);
+
 
 app.post('/addPreference', async(req,res)=>{
     const {bookingDate, bookingTime, schoolName, schoolLocation, schoolFee } = req.body
@@ -119,36 +180,7 @@ app.post('/addPreference', async(req,res)=>{
 
 })
 
-app.post('/register', async (req,res)=>{
-    // const {firstName, lastName, email, password} = req.body
-   
-    try{
-        const user = await new User({
-            firstName : req.body.firstName,
-            lastName:req.body.lastName,
-            email:req.body.email, 
-            password: req.body.password});
-         user.save()
-         .then (()=>res.json({message: user}))
-         .catch(err=>res.json({message: err.message}))
-        // console.log(req.body)
-        // if (user !== null){
-        //     res.end(JSON.stringify(user))
-        // }
-        // return res.json({
-        //     'result':'failure',
-        //     'message':'Register failed'
-        // });
-    } catch (error){
-        console.log(error)
-        return res.json({
-            'result':'failure',
-            'message':'Maybe the email is already taken',
-            'Description':'Register failed'
-        })
 
-    }
-})
 
 app.delete('/users/:id', (req,res)=>{
     const {id}= req.params
@@ -168,16 +200,6 @@ app.patch('/users/:id', (req,res)=>{
         res.send(`User ${id} not found`)
     }
 })
-
-//Showing login form
-app.get("/login", function (req, res) {
-    res.render('login', {
-    title: 'Login',
-    email: '',
-    password: ''     
-    })
-});
-
 
 
 
