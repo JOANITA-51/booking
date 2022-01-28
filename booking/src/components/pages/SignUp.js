@@ -1,11 +1,49 @@
+// import React from 'react';
+// require('react-dom')
+// window.React2 = require('react');
+// console.log(window.React1 === window.React2)
+// const SignUp = () => {
+//   return <div></div>;
+// };
+
+// export default SignUp;
+
+
 import React from 'react'
 import { Container, Form, Row, Col, FloatingLabel, Button } from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import '../../App.css';
 import * as yup from 'yup';
 import {Formik} from 'formik';
+import {useState} from 'react'
+import { useHistory } from 'react-router-dom';
 
-function SignUp() {
+
+const SignUp=()=> {
+  const history = useHistory();
+  const [name, setName] = useState(" ")
+  const [email, setEmail] = useState(" ")
+  const [password, setPassword] = useState(" ")
+
+  const signUp = async ()=>{
+    const details = {name, email, password}
+    console.log(details)
+  
+    const result = await fetch ("http://localhost:3003/register",
+      {
+        method:"POST",
+        body:JSON.stringify(details),
+        headers:{
+          "Content-Type":"application/json",
+          "Accept":"application/json"
+        }
+      }
+    ).then(history.push("/"))
+  
+    result = await result.json()
+  }
+
+
   //defining the schema
   const schema = yup.object().shape({
     firstName : yup.string().required("First Name is required"),
@@ -45,7 +83,7 @@ function SignUp() {
           handleBlur,
           values,
           touched,
-          isValid,
+          isInvalid,
           errors
         }) => (
 
@@ -59,7 +97,7 @@ function SignUp() {
               <Col md>
                 <Form.Group controlId="validationFormik01">
                   <FloatingLabel controlId="floatingInputGrid" label="First name" className="mb-3 ms-5 fs-5">
-                    <Form.Control type="text" name ="firstName" value={values.firstName} onChange={handleChange} isInvalid={!!errors.firstName}  />
+                    <Form.Control type="text" name ="firstName" value={values.firstName} onChange={ e=> setName(e.target.value)} value={name} isInvalid={!!errors.firstName}  />
                   </FloatingLabel>
                   <Form.Control.Feedback>{errors.firstName}</Form.Control.Feedback>
                 </Form.Group>
@@ -78,14 +116,14 @@ function SignUp() {
 
             <Form.Group controlId="validationFormik02">
               <FloatingLabel controlId="floatingInput"  label="Email address"  className="mb-3 ms-5 fs-5" >
-                <Form.Control type="email" name="email" value={values.email} onChange={handleChange} isInvalid={!!errors.email}  />
+                <Form.Control type="email" name="email" value={values.email} onChange={(e) => setEmail(e.target.value)} value={name}  isInvalid={!!errors.email}  />
               </FloatingLabel>
               <Form.Control.Feedback>{errors.email}</Form.Control.Feedback>
             </Form.Group>
 
             <Form.Group controlId="validationFormik02">
               <FloatingLabel controlId="floatingPassword" label="Password" className='ms-5 mb-4 fs-5' >
-                <Form.Control type="password" name="password" value={values.password} onChange={handleChange} isInvalid={!!errors.password} />
+                <Form.Control type="password" name="password" value={values.password} onChange={(e)=> setPassword(e.target.value)} value={name}  isInvalid={!!errors.password} />
               </FloatingLabel>
               <Form.Control.Feedback>{errors.password}</Form.Control.Feedback>
             </Form.Group>
@@ -100,7 +138,7 @@ function SignUp() {
 /><Link className='me-2 ms-2' to = '/'>Terms Of Use </Link> and <Link className='ms-2' to = '/'> Privacy Policy </Link>
               
             </Form.Group>
-            <Button type='submit' className='ms-5 mb-3' id='SignUp' size='lg'>  Sign Up </Button>
+            <Button type='submit' className='ms-5 mb-3' id='SignUp' size='lg' onClick={signUp}>  Sign Up </Button>
           </Form>
 
           
