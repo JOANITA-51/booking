@@ -7,12 +7,7 @@ const cors = require('cors');
 const ObjectId  = require('mongodb').ObjectID;
 const jwt = require('jsonwebtoken');
 const ErrorResponse = require('./utils/ErrorResponse');
-const getSignedJwtToken = id =>{
-    return jwt.sign({id}, `${process.env.JWT_KEY}`,{
-        expiresIn:"1h"
-    })
-}
-const token = getSignedJwtToken(User.id);
+
 /*
 const router = require('./routes/user');
 const routerPreference = require('./routes/preference')

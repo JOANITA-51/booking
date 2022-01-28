@@ -48,3 +48,23 @@ exports.login = async(req,res,next) => {
     const id = user.getId();
     res.status(200).json({success:true, token, id})
 }
+
+exports.logout = async(req, res, next) =>{
+    res.cookies('token','none',{
+        httpOnly:true,
+    });
+    res.status(200).json({
+        success:true,
+        data:{}
+    })
+}
+
+exports.getMe = async (req, res, next)=>{
+    //user is already available is req due to the protect middleware
+    const user = req.user;
+
+    res.status(200).json({
+        success : true,
+        data: user,
+    })
+}
