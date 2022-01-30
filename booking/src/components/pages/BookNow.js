@@ -4,20 +4,20 @@ import '../../App.css';
 import axios from "axios";
 import { useState } from 'react';
 import {Link} from 'react-router-dom';
-import { withRouter, useHistory } from "react-router-dom";
+import { useHistory } from 'react-router-dom';
 
 const BookNow = ()=> {
 
     let history = useHistory();
     const [data, setData] = useState({})
     //fetch data
-    const [resdata , setResdata] = useState({})
-
+  
+/* 
     useEffect(()=>{
        
        // history.push(`/submit/${resdata._id}`)
 
-    },[resdata])
+    },[resdata]) */
 
     const bookSubmit=(event) => {
         event.preventDefault();
@@ -28,14 +28,14 @@ const BookNow = ()=> {
         .then(
             (response)=>{
                 console.log(response)
-                setResdata(response.data)
+                
             }
         )
         .catch((error)=>{
             console.log('An error has occurred');
         })
 
-
+        history.push('/submit')
         
     }
     console.log(data)
@@ -115,7 +115,7 @@ const BookNow = ()=> {
                     </div>
                 </Form>
 
-                {resdata._id &&  <Button variant="outline-dark" className='ms-5  booking' size = 'lg' > <Link to =  {`/submit/${resdata._id}` }state={{data}} >check</Link></Button>}
+                {/* {resdata._id &&  <Button variant="outline-dark" className='ms-5  booking' size = 'lg' > <Link to =  {`/submit/${resdata._id}` }state={{data}} >check</Link></Button>} */}
 
             </Container> 
              

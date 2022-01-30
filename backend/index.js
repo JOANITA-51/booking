@@ -123,6 +123,7 @@ app.post('/login', async (req,res,next)=>{
 
 })
 
+//finding all the users
 app.get('/submitPreference', async(req, res)=>{
     try{
         const preferences = await Preference.find();
@@ -133,7 +134,7 @@ app.get('/submitPreference', async(req, res)=>{
     }
 })
 
-
+// finding a particular user by the id
 app.get('/submitPreference/:id', async(req, res)=>{
     try{
         const {id}= req.params
@@ -148,7 +149,7 @@ app.get('/submitPreference/:id', async(req, res)=>{
 
 
 
-
+// Adding the booking information
 app.post('/addPreference', async(req,res)=>{
     const {bookingDate, bookingTime, schoolName, schoolLocation, schoolFee } = req.body
     try{

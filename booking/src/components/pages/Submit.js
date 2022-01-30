@@ -4,15 +4,15 @@ import { Alert } from 'react-bootstrap'
 import BookNow from './BookNow';
 
 const Submit=()=>{
-    // const {id} = useParams();
+    const {id} = useParams();
     const [items, setItems] = useState({});
-    //const location = useLocation()
-    // useEffect ( () => {
-    //     fetchItems();
-    // }, [] );
-    //console.log(`The location is ${JSON.stringify(location.state)}`)
+    const location = useLocation()
+    useEffect ( () => {
+        fetchItems();
+    }, [] );
+    console.log(`The location is ${JSON.stringify(location.state)}`)
 
-    // console.log(id)
+    console.log(id)
     const fetchItems = async () =>{
 
         const response = await fetch(`http://localhost:3003/submitPreference/`);
