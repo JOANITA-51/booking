@@ -17,6 +17,9 @@ import {Formik} from 'formik';
 import {useState} from 'react'
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as Yup from 'yup'
 
 
 const SignUp=()=> {
@@ -24,7 +27,31 @@ const SignUp=()=> {
   const [details, setDetails] = useState({})
  
 
-  const handleSubmit = (event) =>{
+  // const Submission = (event) =>{
+  //   event.preventDefault()
+
+  //   axios.post('http://localhost:3003/register',details)
+  //     .then(response=>console.log(response.data))
+  //     .catch(error => console.log(error))
+
+  //     history.push('/submit')
+  // }
+
+  const formSchema = Yup.object().shape({
+    password: Yup.string()
+      .required('Password is required')
+      .min(4,'Password length should be atleast 4 characters'),
+    passwordConfirm: Yup.string()
+      .required('Confirm Password is required')
+      .oneOf([Yup.ref('password')],'Passwords must and should match'),
+  })
+
+  const validationOpt = {resolver: yupResolver(formSchema)}
+  const {register,handleSubmit,formState}=useForm(validationOpt)
+  const {errors} = formState
+
+  function onFormSubmit(data, event){
+    console.log(JSON.stringify(data, null, 4))
     event.preventDefault()
 
     axios.post('http://localhost:3003/register',details)
@@ -32,18 +59,8 @@ const SignUp=()=> {
       .catch(error => console.log(error))
 
       history.push('/submit')
+    
   }
-
-
-
-   // if (typeof input["password"] !== "undefined" && typeof input["confirm-password"] !== "undefined") {
-              
-    //   if (input["password"] != input["confirm-password"]) {
-    //       isValid = false;
-    //       errors["password"] = "Passwords don't match.";
-    //   }
-    // } 
-
 
   return (
     <div className='sign-up d-grid'>
@@ -54,7 +71,7 @@ const SignUp=()=> {
           <h5 className='ms-4 fw-normal' >Please fill in this form to create an account</h5>
           <hr  />
           {/* <Form className='text-center' noValidate onSubmit={handleSubmit} method ='post' action='http://localhost:3003/register'> */}
-          <Form className='text-center' onSubmit={handleSubmit}>
+          <Form className='text-center' onSubmit={handleSubmit(onFormSubmit)}>
             <Row className="g-2">
               <Col md>
                 <Form.Group >
@@ -85,20 +102,25 @@ const SignUp=()=> {
 
             <Form.Group >
               <FloatingLabel controlId="floatingPassword" label="Password" className='ms-5 mb-4 fs-5' >
-                <Form.Control type="password" name="password"  onChange={(event)=> {setDetails({...details,password:event.target.value})}}  required />
+                <Form.Control type="password" name="password" {...register('password')} onChange={(event)=> {setDetails({...details,password:event.target.value})}}  required
+                className={`form-control ${errors.password ? 'is-invalid' : ''}`} />
+                    <div className="invalid-feedback">{errors.password?.message}</div>
+          
               </FloatingLabel>
               
             </Form.Group>
 
-            <FloatingLabel controlId="floatingPassword" label="Confirm Password" className='ms-5 mb-4 fs-5' >
-              <Form.Control type="password" name="confirm-Password" />
+            <FloatingLabel controlId="floatingPassword" label="Confirm Password (The passwords should match)" className='ms-5 mb-4 fs-5' >
+              <Form.Control type="password" name=" passwordConfirm" {...register('passwordConfirm')}   className={`form-control ${ errors.passwordConfirm ? 'is-invalid' : ''}`}/>
             </FloatingLabel>
+            <div className="invalid-feedback"> {errors.passwordConfirm?.message}</div>
             
 
             <Form.Group className='d-flex mb-4 ms-5 fs-5' controlId='remember-me'>
               <Form.Check  required name="term"  label='I accept the' /><Link className='me-2 ms-2' to = '/'>Terms Of Use </Link> and <Link className='ms-2' to = '/'> Privacy Policy </Link>
               
             </Form.Group>
+             
             <Button type='submit' className='ms-5 mb-3' id='SignUp' size='lg' >  Sign Up </Button>
           </Form>
 
