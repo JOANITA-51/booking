@@ -28,3 +28,12 @@ Content-Type: application/json
     "email":"mariaagatha@gmail.com",
     "password":"123456"
 }
+
+###
+
+POST http://localhost:3003/update/61cb6a59d6a72f5dd3b6c541
+Content-Type: application/json
+
+{
+    "schoolName":"st.Francis"
+}

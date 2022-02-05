@@ -144,7 +144,7 @@ app.get('/submitPreference/:id', async(req, res)=>{
 
     }catch(error){
         res.json({message: error.message})
-    }
+    } 
 })
 
 
@@ -175,7 +175,23 @@ app.post('/addPreference', async(req,res)=>{
     }
 
 })
+//Updating the booking information
+app.post('/update/:id',async(req,res)=>{
+    // const id = req.params.id
+    // const record = await repo.update(id, req.body)
+    // console.log(`Record Updated: \n ${JSON.stringify(record, null, 2)}`)
+    // res.send('Record Updated')
+    try{
+        const {id}= req.params
+        const preferences = await Preference.UpdateOne({_id: ObjectId(id)}
+        );
+        res.json(preferences)
 
+    }catch(error){
+        res.json({message: error.message})
+    }
+
+})
 
 
 app.delete('/users/:id', (req,res)=>{

@@ -33,3 +33,11 @@ Form{
     color: #fff; 
     width: 30%;
 }
+
+Table{
+    width : 75%
+}
+
+.table>:not(:first-child){
+    border-top: 0px solid currentColor;
+}

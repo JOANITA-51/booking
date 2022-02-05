@@ -9,6 +9,9 @@ import BookNow from './components/pages/BookNow';
 import './App.css'
 import NavBar from './components/NavBar';
 import Submit from './components/pages/Submit'
+import EditBookNow from './components/pages/EditBookNow';
+import BookNowList from './components/pages/BookNowList';
+import Users from './components/pages/Users';
 
 function App() {
   return (
@@ -24,6 +27,9 @@ function App() {
           <Route path="/sign-up" component={SignUp}/>
           <Route path="/book-now"  component={BookNow} exact/>
           <Route path="/submit/:id" ><Submit /></Route>
+          <Route path="/edit/:id" ><EditBookNow /></Route>
+          <Route path="/list" ><BookNowList/></Route>
+          <Route path="/users" ><Users/></Route>
           
         </Switch>
       </Router>
