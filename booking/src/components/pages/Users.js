@@ -1,7 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
 import axios from 'axios';
-import {Table} from 'react-bootstrap'
+import {Table, Container} from 'react-bootstrap'
+import '../../App.css';
 
 const Users = () => {
     
@@ -9,16 +10,15 @@ const Users = () => {
     
     axios.get('http://localhost:3003/')
         .then(({data})=> {
-            console.log({data})
+            //console.log({data})
             const details = data.map((user) =>{
                 const {email, firstName, lastName} = user
                 return {email: email, firstName:firstName , lastName:lastName}
             })
             setUsers(details)
         })
-        .catch(error =>console.log(error))
-     
-
+        .catch(error =>console.log(error)) 
+ 
     //console.log (users)
     /*
     const displayUsersDetails = (users)=>{
@@ -34,33 +34,54 @@ const Users = () => {
 
   return (
     <div>
-        <h3>Users</h3>
-        <Table striped bordered hover size="sm" striped='True'>
-
-        {
-            users.map((user)=> <div>
+        <Container>
+            <h3>Users</h3>
+            <Table striped bordered hover size="sm" stripped='True'>
                 <thead>
                     <tr>
                         <th>First Name</th>
+                            
                         <th>Last Name</th>
+                        
                         <th>Email </th>
+                        
                     </tr>
                 </thead>
 
+            
                 <tbody>
-                    <tr >
-                        <td>{user.firstName}</td>
-                        <td>{user.lastName}</td>
-                        <td>{user.email}</td>
-                    </tr>
+                    {
+                        users.map((user, index)=> 
+                            <tr key={index}>
+                                <td>{user.firstName}</td>
+                                            
+                                <td>{user.lastName}</td>
+                                                
+                            <td>{user.email}</td>
+                            </tr>
                         
+                        )
+                    }
 
+                        
                 </tbody>
                 
+                <tfoot>
+                    <tr>
+                        <th>First Name</th>
+                            
+                        <th>Last Name</th>
+                        
+                        <th>Email </th>
+                        
+                    </tr>
+                </tfoot>
 
-            </div>)
-        }
-        </Table>
+            
+            
+            </Table> 
+        </Container>
+        
        
     </div>
   )

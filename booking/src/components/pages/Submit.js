@@ -1,75 +1,67 @@
 import React, {useEffect, useState} from 'react';
-import { useLocation, useParams } from 'react-router-dom';
-import { Alert } from 'react-bootstrap'
-import BookNow from './BookNow';
+import {useParams } from 'react-router-dom';
+import { Alert, Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const Submit=()=>{
     const {id} = useParams();
     const [items, setItems] = useState({});
-    const location = useLocation()
-    useEffect ( () => {
-        fetchItems();
-    }, [] );
-    console.log(`The location is ${JSON.stringify(location.state)}`)
-
     console.log(id)
-    const fetchItems = async () =>{
-
-        const response = await fetch(`http://localhost:3003/submitPreference/`);
-        const items = response.data;
-        setItems(items)
-    }
-    console.log(items)
+        
+    axios.get(`http://localhost:3003/submitPreference/${id}`)
+        .then(({data})=> {
+            //console.log({data})
+            const list = data.map((item) =>{
+                const {name, bookingDate, bookingTime, schoolName, schoolLocation, schoolFee} = item
+                return {name:name, bookingDate:bookingDate , bookingTime:bookingTime, schoolName:schoolName, schoolLocation:schoolLocation, schoolFee:schoolFee }
+            })
+            setItems(list)
+        })
+        .catch(error =>console.log(error))
     return (
         <div>
-            {/* <h1>{items.schoolLocation}</h1> */}
-            <h2>Thanks for submitting</h2>
-            {/* <BookNow/> */}
-            
-            
-{/*                 
-                    {items.user.firstName}
-                    {items.user.lastName}
-                    {items.user.email}
-                    {items.preference.bookingDate}
-                    {items.preference.bookingTime}
-                    {items.preference.schoolName}
-                    {items.preference.schoolLocation}
-                    {items.preference.schoolFee} */}
 
-                              
-            
-
-            
-            {/* <Alert variant="success">
+            <Alert variant="success">
                 <Alert.Heading>Form Submitted !!</Alert.Heading>
                 <p>Thank you for booking , Here is what we got from you</p>
   
             </Alert>
-            <ul className="list-group">
-                <li className="list-group-item">
-                    First Name: {values.firstName}
-                </li>
-                <li className="list-group-item">
-                    Last Name: {values.lastName}
-                </li>
-                <li className="list-group-item">
-                    Email: {values.email}
-                </li>
-                <li className="list-group-item">
-                    Preferred Date: {values.date}
-                </li>
-                <li className="list-group-item">
-                    Preferred Time: {values.time}
-                </li>
-                <li className="list-group-item">
-                    School: {values.time}
-                </li>
-            </ul>
+            {
+                items.map((item, index)=>
+                <ul className="list-group" key={index}>
+                    <li className="list-group-item">
+                        Full Name: {item.name}
+                    </li>
+                    {/* <li className="list-group-item">
+                        Last Name: {record.lastName}
+                    </li>
+                    <li className="list-group-item">
+                        Email: {record.email}
+                    </li> */}
+                    <li className="list-group-item">
+                        Preferred Date: {item.bookingDate}
+                    </li>
+                    <li className="list-group-item">
+                        Preferred Time: {item.bookingTime}
+                    </li>
+                    <li className="list-group-item">
+                        School Name: {item.schoolName}
+                    </li>
+                    <li className="list-group-item">
+                        School Location: {item.schoolLocation}
+                    </li>
+                    <li className="list-group-item">
+                        School Fee: {item.schoolFee}
+                    </li>
+                </ul>
+                )
+            }
+            
 
             <Link to="/log-in"> <Button variant="success">Confirm Booking</Button> </Link>{' '}
             <Link to="/log-in"> <Button variant="warning">Edit Booking</Button> </Link>{' '}
-            <Link to="/log-in"> <Button variant="warning">Set Reminder</Button> </Link>{' '} */}
+            <Link to="/log-in"> <Button variant="warning">Set Reminder</Button> </Link>{' '} 
         </div>
     )
 }

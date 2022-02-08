@@ -35,10 +35,10 @@ const BookNow = ()=> {
             console.log('An error has occurred');
         })
 
-        history.push('/submit')
+        history.push(`/submit/${data._id}`)
         
     }
-    console.log(data)
+    console.log(data._id)
      const [weatherInfo, setWeatherInfo] = useState({});
      const [city, setCity] = useState(" ");
            
@@ -110,7 +110,7 @@ const BookNow = ()=> {
                         <Form.Control type="text" name="schoolFee" onChange={(event)=>{setData({...data,schoolFee:event.target.value})}}/>
                     </FloatingLabel>
                     <div  >
-                        <Button type='submit' variant="outline-dark" className='ms-5  booking' size = 'lg'>Book Now </Button>
+                        <Button type='submit' variant="outline-dark" className='ms-5  booking' size = 'lg'> <Link to =  {`/submit/${data._id}` }state={{data}} >Book Now</Link> </Button>
                         
                     </div>
                 </Form>
