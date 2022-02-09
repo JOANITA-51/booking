@@ -7,19 +7,21 @@ import { useState } from 'react';
 function Login() {
     const history = useHistory() ;
     const [profile, setProfile] = useState({})
+    const [errorMessage, setErrorMessage] = useState('');
 
     const handleSubmit =(event)=>{
         event.preventDefault()
 
         axios.post('http://localhost:3003/login',profile)
         .then(response=>console.log(response.data))
-        .catch(error => console.log(error))
+        .catch(error =>setErrorMessage(error))
 
     }
     
+    
     return (
         <div className='log-in d-grid'>
-            
+            {errorMessage && (  <p className="error"> {errorMessage} </p>)}
             <Container id='main-container' className='mt-5' >
                 <h2 className='mb-4 mt-4 ms-5 fs-1'>Log In</h2>
                 <h5 className='ms-5 fw-normal' >Please Log in </h5>

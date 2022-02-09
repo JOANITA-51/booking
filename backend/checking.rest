@@ -37,3 +37,24 @@ Content-Type: application/json
 {
     "schoolName":"st.Francis"
 }
+
+###
+POST http://localhost:3003/login
+Content-Type: application/json
+
+{
+    "email":"nakityojoanita51@gmail.com",
+    "password":"12345"
+}
+
+###
+POST http://localhost:3003/register
+content-type: application/json
+
+{
+    "firstName": "Joanita",
+    "lastName": "Nakityo",
+    "email": "nakityojoanita51@gmail.com",
+    "password": "12345"
+
+}

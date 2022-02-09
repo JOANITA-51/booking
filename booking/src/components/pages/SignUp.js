@@ -58,7 +58,7 @@ const SignUp=()=> {
       .then(response=>console.log(response.data))
       .catch(error => console.log(error))
 
-      history.push('/submit')
+      history.push('/book-now')
     
   }
 

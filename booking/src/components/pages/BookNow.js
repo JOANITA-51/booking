@@ -115,7 +115,7 @@ const BookNow = ()=> {
                     </div>
                 </Form>
 
-                {resdata._id &&  <Button variant="outline-dark" className='ms-5  booking' size = 'lg' > <Link to =  {`/submit/${resdata._id}` }state={{data}} >check</Link></Button>}
+                {resdata._id &&  <Button variant="outline-dark" className='ms-5 mt-5 booking' size = 'lg' > <Link to =  {`/submit/${resdata._id}` }state={{data}} >check</Link></Button>}
 
             </Container> 
              

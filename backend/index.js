@@ -92,7 +92,7 @@ app.post('/login', async (req,res,next)=>{
         }
     
         //Check for user
-        const user = await User.findOne({email}).select('+password');
+        const user = await User.findOne({email}).select('password');
         if(!user){
             return next(new ErrorResponse('invalid credentials', 401))
         }
@@ -102,6 +102,13 @@ app.post('/login', async (req,res,next)=>{
         if(!isMatch){
             return next(new ErrorResponse('Invalid credentials', 401))
         }
+        /*User.comparePassword(password, function(err, isMatch) {
+            if (isMatch) {
+              return done(null, user);
+            } else {
+              return done(null, false, { message: 'Incorrect password.' });
+            }
+          });*/
     
     }
     catch (error) {
