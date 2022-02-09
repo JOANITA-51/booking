@@ -12,8 +12,8 @@ const Submit=()=>{
         .then(({data})=> {
             console.log({data})
             const list = Object.keys(data).map((key,item) =>{
-                const {name, bookingDate, bookingTime, schoolName, schoolLocation, schoolFee} = item
-                return {name:name, bookingDate:bookingDate , bookingTime:bookingTime, schoolName:schoolName, schoolLocation:schoolLocation, schoolFee:schoolFee }
+                const {user, bookingDate, bookingTime, schoolName, schoolLocation, schoolFee} = item
+                return {user:user, bookingDate:bookingDate , bookingTime:bookingTime, schoolName:schoolName, schoolLocation:schoolLocation, schoolFee:schoolFee }
             })
             setItems(list)
         })
@@ -30,7 +30,7 @@ const Submit=()=>{
                 Object.keys(items).map((item, index)=>
                 <ul className="list-group" key={index}>
                     <li className="list-group-item">
-                        Full Name: {item.name}
+                        {item.name}
                     </li>
                     {/* <li className="list-group-item">
                         Last Name: {record.lastName}
@@ -39,19 +39,19 @@ const Submit=()=>{
                         Email: {record.email}
                     </li> */}
                     <li className="list-group-item">
-                        Preferred Date: {item.bookingDate}
+                        {item.bookingDate}
                     </li>
                     <li className="list-group-item">
-                        Preferred Time: {item.bookingTime}
+                        {item.bookingTime}
                     </li>
                     <li className="list-group-item">
-                        School Name: {item.schoolName}
+                        {item.schoolName}
                     </li>
                     <li className="list-group-item">
-                        School Location: {item.schoolLocation}
+                        {item.schoolLocation}
                     </li>
                     <li className="list-group-item">
-                        School Fee: {item.schoolFee}
+                        {item.schoolFee}
                     </li>
                 </ul>
                 )
