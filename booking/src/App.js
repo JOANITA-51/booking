@@ -25,7 +25,7 @@ function App() {
           <Route path = "/steps" component = {Steps} />
           <Route path ="/log-in" component = {LogIn} />
           <Route path="/sign-up" component={SignUp}/>
-          <Route path="/book-now"  component={BookNow} exact/>
+          <Route path="/book-now"  component={BookNow} />
           <Route path="/submit/:id" ><Submit /></Route>
           <Route path="/edit/:id" ><EditBookNow /></Route>
           <Route path="/list" ><BookNowList/></Route>

@@ -151,9 +151,9 @@ app.get('/submitPreference/:id', async(req, res)=>{
 
 // Adding the booking information
 app.post('/addPreference', async(req,res)=>{
-    const {bookingDate, bookingTime, schoolName, schoolLocation, schoolFee } = req.body
+    const {bookingDate, bookingTime, schoolName, schoolLocation, schoolFee,user } = req.body
     try{
-        const preference = new Preference({bookingDate, bookingTime, schoolName, schoolLocation, schoolFee});
+        const preference = new Preference({bookingDate, bookingTime, schoolName, schoolLocation, schoolFee, user});
         return await preference.save()
             .then(()=>{res.json(preference)})
             .catch(err=>res.json({message:err.message}))

@@ -7,12 +7,11 @@ import axios from 'axios';
 const Submit=()=>{
     const {id} = useParams();
     const [items, setItems] = useState({});
-    console.log(id)
-        
+ 
     axios.get(`http://localhost:3003/submitPreference/${id}`)
         .then(({data})=> {
-            //console.log({data})
-            const list = data.map((item) =>{
+            console.log({data})
+            const list = Object.keys(data).map((key,item) =>{
                 const {name, bookingDate, bookingTime, schoolName, schoolLocation, schoolFee} = item
                 return {name:name, bookingDate:bookingDate , bookingTime:bookingTime, schoolName:schoolName, schoolLocation:schoolLocation, schoolFee:schoolFee }
             })
@@ -28,7 +27,7 @@ const Submit=()=>{
   
             </Alert>
             {
-                items.map((item, index)=>
+                Object.keys(items).map((item, index)=>
                 <ul className="list-group" key={index}>
                     <li className="list-group-item">
                         Full Name: {item.name}
