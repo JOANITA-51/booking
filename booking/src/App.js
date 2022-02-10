@@ -1,6 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './components/pages/Home';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Features from './components/Features';
 import Steps from './components/Steps';
 import LogIn from './components/pages/LogIn';
@@ -18,7 +18,7 @@ function App() {
     <div className="App">
       <Router>
         <NavBar title = 'chotrix'/>
-        <Switch>
+        <Routes>
          
           <Route exact path = "/" component = {Home} />
           <Route path = "/features" component = {Features} />
@@ -31,7 +31,7 @@ function App() {
           <Route path="/list" ><BookNowList/></Route>
           <Route path="/users" ><Users/></Route>
           
-        </Switch>
+        </Routes>
       </Router>
      
                 
