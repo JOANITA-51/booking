@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {useParams, useHistory} from "react-router-dom";
+import {useParams, useNavigate} from "react-router-dom";
 import { Container, Form, FloatingLabel, Button } from 'react-bootstrap';
 import axios from 'axios';
 
@@ -15,7 +15,7 @@ const EditBookNow = () => {
 
     });
     const params = useParams();
-    const history = useHistory();
+    const navigate = useNavigate();
 
     useEffect(()=>{
         async function fetchData(){
@@ -31,7 +31,7 @@ const EditBookNow = () => {
             const record = await response.json();
             if(!record){
                 window.alert(`Record with id ${id} not found`);
-                history("/")
+                navigate("/")
                 return;
             }
 
@@ -41,7 +41,7 @@ const EditBookNow = () => {
 
         return;
 
-    },[params.id, history]);
+    },[params.id, navigate]);
 
 
     //Updating the state properties.

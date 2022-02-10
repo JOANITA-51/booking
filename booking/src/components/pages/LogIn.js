@@ -1,11 +1,11 @@
 import React from 'react';
 import { Container, Form, Button, FloatingLabel } from 'react-bootstrap';
-import {Link, useHistory} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import '../../App.css';
 import axios from 'axios';
 import { useState } from 'react';
 function Login() {
-    const history = useHistory() ;
+    const navigate = useNavigate() ;
     const [profile, setProfile] = useState({})
     const [errorMessage, setErrorMessage] = useState('');
 

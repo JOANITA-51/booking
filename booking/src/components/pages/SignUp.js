@@ -15,7 +15,7 @@ import {Link} from 'react-router-dom';
 import '../../App.css';
 import {Formik} from 'formik';
 import {useState} from 'react'
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
@@ -23,7 +23,7 @@ import * as Yup from 'yup'
 
 
 const SignUp=()=> {
-  const history = useHistory();
+  const navigate = useNavigate();
   const [details, setDetails] = useState({})
  
 
@@ -58,7 +58,7 @@ const SignUp=()=> {
       .then(response=>console.log(response.data))
       .catch(error => console.log(error))
 
-      history.push('/book-now')
+      navigate.push('/book-now')
     
   }
 
