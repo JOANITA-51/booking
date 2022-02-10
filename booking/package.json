@@ -3,10 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "proxy": "http://localhost:3003",
-  "engines": {
-    "npm": "7.19.0",
-    "node": "16.6.1"
-  },
   "dependencies": {
     "@hookform/resolvers": "^2.8.8",
     "@testing-library/jest-dom": "^5.16.1",
