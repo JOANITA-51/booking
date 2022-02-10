@@ -70,7 +70,7 @@ const EditBookNow = () => {
                 'content-Type':'application/json'
             },
         });
-        history("/");
+        navigate("/");
     }
     
      const [weatherInfo, setWeatherInfo] = useState({});
