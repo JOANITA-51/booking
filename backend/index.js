@@ -31,7 +31,7 @@ mongoose.connect(process.env.DB_URI, {useNewUrlParser: true})
     console.log(error)
 } )
 
-const PORT = process.env.PORT||4000;
+
 const app = express();
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
@@ -46,14 +46,22 @@ app.use('/preference',routerPreference);
 */
 
 app.get('/', async(req, res)=>{
-    // res.send ('Welcome!!')
+    res.send ('Welcome!!')
+    // try{
+    //     const users = await User.find();
+    //     res.json(users)
+    // }catch{
+    //     res.json('opps!')
+    // }
+});
+app.get('/users', async(req,res)=>{
     try{
         const users = await User.find();
         res.json(users)
     }catch{
         res.json('opps!')
     }
-});
+})
 
 //For the  signup button
 app.post('/register', async (req,res)=>{
@@ -221,7 +229,7 @@ app.patch('/users/:id', (req,res)=>{
 })
 
 
-
+const PORT = process.env.PORT||3002;
 app.listen(PORT, ()=>{
     console.log(`server is running on port ${PORT}`)
 })
