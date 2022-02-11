@@ -46,21 +46,17 @@ app.use('/preference',routerPreference);
 */
 
 app.get('/', async(req, res)=>{
-    res.send ('Welcome!!')
-    // try{
-    //     const users = await User.find();
-    //     res.json(users)
-    // }catch{
-    //     res.json('opps!')
-    // }
-});
-app.get('/users', async(req,res)=>{
+    // res.send ('Welcome!!')
     try{
         const users = await User.find();
         res.json(users)
     }catch{
         res.json('opps!')
     }
+});
+app.get('/welcome', async(req,res)=>{
+    res.send ('Welcome!!')
+
 })
 
 //For the  signup button
