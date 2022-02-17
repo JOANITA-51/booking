@@ -4,11 +4,9 @@ import '../../App.css';
 import axios from "axios";
 import { useState } from 'react';
 import {Link} from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
 
 const BookNow = ()=> {
 
-    let navigate = useNavigate();
     const [data, setData] = useState({})
     //fetch data
     const [resdata , setResdata] = useState({})
@@ -22,12 +20,12 @@ const BookNow = ()=> {
     const bookSubmit=(event) => {
         event.preventDefault();
         axios.post(
-            'http://localhost:3003/addPreference',
+            'https://schotrix.herokuapp.com/addPreference',
             data
         )
         .then(
             (response)=>{
-                console.log(response)
+                //console.log(response)
                 setResdata(response.data)
                                 
             }
@@ -78,11 +76,11 @@ const BookNow = ()=> {
                     <FloatingLabel controlId="floatingInput" label="Time" className='ms-5 mb-4 fs-5' >
                         <Form.Control type="time" name="bookingTime" onChange={(event)=>{setData({...data,bookingTime:event.target.value})}}/>
                     </FloatingLabel>
-                    <FloatingLabel controlId="floatingInput" label="Name of the School" className='ms-5 mb-4 fs-5' >
+                    <FloatingLabel controlId="floatingInput" label="School Name" className='ms-5 mb-4 fs-5' >
                         <Form.Control type="text" name="schoolName" onChange={(event)=>{setData({...data,schoolName:event.target.value})}} />
                     </FloatingLabel>
                     <Form.Group className='d-flex mb-3 mt-3'>
-                    <FloatingLabel controlId="floatingInput" label="Location of the school" className='ms-5 mb-4 fs-5' style={{width:"75%"}} >
+                    <FloatingLabel controlId="floatingInput" label="School dist." className='ms-5 mb-4 fs-5' style={{width:"75%"}} >
                     <Form.Control size="lg" type="text" value={city} onChange={(e) => {setCity(e.target.value)
                         setData({...data,schoolLocation:e.target.value})
                     

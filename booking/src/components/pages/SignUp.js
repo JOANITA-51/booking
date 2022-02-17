@@ -47,18 +47,18 @@ const SignUp=()=> {
   })
 
   const validationOpt = {resolver: yupResolver(formSchema)}
-  const {register,handleSubmit,formState}=useForm(validationOpt)
+  const {register, handleSubmit, formState} = useForm(validationOpt)
   const {errors} = formState
 
   function onFormSubmit(data, event){
     console.log(JSON.stringify(data, null, 4))
     event.preventDefault()
 
-    axios.post('http://localhost:3003/register',details)
+    axios.post('https://schotrix.herokuapp.com/register',details)
       .then(response=>console.log(response.data))
       .catch(error => console.log(error))
 
-      navigate.push('/book-now')
+      navigate('/success')
     
   }
 
@@ -66,7 +66,7 @@ const SignUp=()=> {
     <div className='sign-up d-grid'>
       <Formik>
    
-          <Container id='main-container' className=' mt-5' >
+        <Container id='main-container' className=' mt-5' >
           <h2 className='mb-4 mt-4 ms-4 fs-1'>Sign UP</h2>
           <h5 className='ms-4 fw-normal' >Please fill in this form to create an account</h5>
           <hr  />
@@ -110,7 +110,7 @@ const SignUp=()=> {
               
             </Form.Group>
 
-            <FloatingLabel controlId="floatingPassword" label="Confirm Password (The passwords should match)" className='ms-5 mb-4 fs-5' >
+            <FloatingLabel controlId="floatingPassword" label="Confirm Password" className='ms-5 mb-4 fs-5' >
               <Form.Control type="password" name=" passwordConfirm" {...register('passwordConfirm')}   className={`form-control ${ errors.passwordConfirm ? 'is-invalid' : ''}`}/>
             </FloatingLabel>
             <div className="invalid-feedback"> {errors.passwordConfirm?.message}</div>
@@ -120,14 +120,13 @@ const SignUp=()=> {
               <Form.Check  required name="term"  label='I accept the' /><Link className='me-2 ms-2' to = '/'>Terms Of Use </Link> and <Link className='ms-2' to = '/'> Privacy Policy </Link>
               
             </Form.Group>
-             
-            <Button type='submit' className='ms-5 mb-3' id='SignUp' size='lg' >  Sign Up </Button>
+            <Button type='submit' className='ms-5 mb-3' id='SignUp' size='lg' >  Sign Up </Button> 
+            
           </Form>
-
-          
+                  
         </Container>
-             
-       
+         
+      
       </Formik>      
     </div>
   );

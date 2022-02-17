@@ -20,7 +20,7 @@ const EditBookNow = () => {
     useEffect(()=>{
         async function fetchData(){
             const id = params.id.toString();
-            const response = await fetch (`http://localhost:3003/submitPreference/${params.id.toString()}`)
+            const response = await fetch (`https://schotrix.herokuapp.com/submitPreference/${params.id.toString()}`)
 
             if(!response.ok){
                 const message = `An error has occured: ${response.statusText}`;
@@ -63,7 +63,7 @@ const EditBookNow = () => {
         };
 
         //Sending a post request to update the data in the database.
-        await fetch (`http://localhost:3003/updatePreference/${params.id}`,{
+        await fetch (`https://schotrix.herokuapp.com/updatePreference/${params.id}`,{
             method: "POST",
             body: JSON.stringify(editedPreference),
             headers: {

@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useState} from 'react';
 import {useParams } from 'react-router-dom';
 import { Alert, Button, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
@@ -8,7 +8,7 @@ const Submit=()=>{
     const {id} = useParams();
     const [item, setItem] = useState({});
  
-    axios.get(`http://localhost:3003/submitPreference/${id}`)
+    axios.get(`https://schotrix.herokuapp.com/submitPreference/${id}`)
         .then(({data})=> {
             setItem(data)
             /*console.log(Object.entries(data).filter(person=>person._id===id))
@@ -54,8 +54,8 @@ const Submit=()=>{
                 
 
                 <Link to="/log-in"> <Button variant="success">Confirm Booking</Button> </Link>{' '}
-                <Link to="/book-now"> <Button variant="warning">Edit Booking</Button> </Link>{' '}
-                <Link to="/log-in"> <Button variant="warning">Set Reminder</Button> </Link>{' '} 
+                <Link to="/book-now"> <Button variant="warning" className='ms-5'>Edit Booking</Button> </Link>{' '}
+                <Link to="/log-in"> <Button variant="warning" className='ms-5'>Set Reminder</Button> </Link>{' '} 
             </Container>
             
         </div>

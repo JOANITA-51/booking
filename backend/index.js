@@ -7,6 +7,8 @@ const cors = require('cors');
 const ObjectId  = require('mongodb').ObjectID;
 const jwt = require('jsonwebtoken');
 const ErrorResponse = require('./utils/ErrorResponse');
+const bcrypt = require('bcrypt');
+//const passport = require('passport')
 
 /*
 const router = require('./routes/user');
@@ -54,10 +56,28 @@ app.get('/', async(req, res)=>{
         res.json('opps!')
     }
 });
-app.get('/welcome', async(req,res)=>{
+app.get('/greetings', async(req,res)=>{
     res.send ('Welcome!!')
 
 })
+
+//combining collections
+User.aggregate([
+    {
+      $lookup:
+        {
+          from: "Preference",
+          localField: "_id",
+          foreignField: "preferenceId",
+          as: "booking_info"
+        },
+   },
+   {
+    $unwind: "$orders_info",
+  },
+])
+    .then((result)=>console.log(result))
+    .catch((error)=>console.log(error))
 
 //For the  signup button
 app.post('/register', async (req,res)=>{
@@ -101,18 +121,19 @@ app.post('/login', async (req,res,next)=>{
             return next(new ErrorResponse('invalid credentials', 401))
         }
     
-        /*Check if password matches
+        //Check if password matches
         const isMatch = await user.matchPassword(password);
         if(!isMatch){
             return next(new ErrorResponse('Invalid credentials', 401))
         }
-        /*User.comparePassword(password, function(err, isMatch) {
+        //compare password
+        user.comparePassword(password, function(err, isMatch) {
             if (isMatch) {
               return done(null, user);
             } else {
               return done(null, false, { message: 'Incorrect password.' });
             }
-          });*/
+          });
     
     }
     catch (error) {
@@ -124,14 +145,22 @@ app.post('/login', async (req,res,next)=>{
 
     res.cookie('t');
 
-    const {_id, firstName} = User;
+    
     return res.json({token, user : {
 
         email:req.body.email, 
-        _id, firstName
+        
     }
     });
 
+}) 
+
+
+// Logout
+app.get('/logout', function(req,res){
+    req.logout();
+    req.flash('success', 'You are logged out');
+    res.redirect('/users/login')
 })
 
 //finding all the users

@@ -11,7 +11,7 @@ function Login() {
     const handleSubmit =(event)=>{
         event.preventDefault()
 
-        axios.post('http://localhost:3003/login',profile)
+        axios.post('https://schotrix.herokuapp.com/login',profile)
         .then(response=>console.log(response.data))
         .catch(error =>setErrorMessage(error))
 

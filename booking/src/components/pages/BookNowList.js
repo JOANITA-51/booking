@@ -5,7 +5,7 @@ import {Table, Container} from 'react-bootstrap'
 const BookNowList = () => {
     const [records, setRecords] = useState([]);
         
-    axios.get('http://localhost:3003/submitPreference')
+    axios.get('https://schotrix.herokuapp.com/submitPreference')
         .then(({data})=> {
             //console.log({data})
             const list = data.map((record) =>{
