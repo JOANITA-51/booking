@@ -101,19 +101,19 @@ const BookNow = ()=> {
                     </FloatingLabel> */}
                     <Row onClick={()=>{
                         getWeatherData(city)}}>
-                            <Col md={10}  >   <FloatingLabel controlId="floatingInput" className='ms-3 mb-4 fs-5' label="School dist.">
+                            <Col md={9}  >   <FloatingLabel controlId="floatingInput" className='ms-3 mb-4 fs-5' label="School dist.">
                     <Form.Control size="lg" type="text" value={city} onChange={(e) => {setCity(e.target.value)
                         setData({...data,schoolLocation:e.target.value})
                     
                         }} name="schoolLocation" />
                     </FloatingLabel>      </Col>
-                    <Col md={2} className='mt-3 '> <Button > WEATHER INFO</Button></Col>
+                    <Col md={3} className=' '> <Button > WEATHER INFO</Button></Col>
                             
                     </Row>
                         {/* <Button  size='lg'onClick={()=>{
                         getWeatherData(city)}}>WEATHER INFO</Button> */}
                     
-                    <Row > <Col className='ms-4 me-3 pt-3 pb-3 mb-3 text-center'
+                    <Row > <Col className='ms-4 pt-3 pb-3 mb-3 text-center'
                         style={
                             {
                             borderRadius:'5px'
@@ -133,8 +133,12 @@ const BookNow = ()=> {
                     <FloatingLabel controlId="floatingInput" label="Facilitation Fee" className='ms-3 mb-4 fs-5' >
                         <Form.Control type="text" name="schoolFee" onChange={(event)=>{setData({...data,schoolFee:event.target.value})}}/>
                     </FloatingLabel>
-                    <Button type='submit' variant="outline-dark" className='booking ms-0' size = 'lg'>  Book Now </Button>
-                    {resdata._id &&  <Button variant="outline-dark" className=' ms-5 booking' size = 'lg' > <Link to =  {`/submit/${resdata._id}` }state={{data}} >Check Info</Link></Button>}                           
+                       <Button type='submit' variant="outline-dark" className='button1 ms-0' size = 'lg'>
+                            Book Now 
+                       </Button>
+                    {resdata._id &&  <Button variant="outline-dark" className=' ms-5 button1' size = 'lg' > <Link to =  {`/submit/${resdata._id}` }state={{data}} >Check Info</Link></Button>} 
+                    
+                                              
                     
                 </Form>
 

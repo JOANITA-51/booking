@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const NavBar= ({title}) => {
     return (
         
-        <header className='header'>
+        
             <Navbar  variant="dark" expand="lg" className="bg-blue">
                 <Container>
                     <Navbar.Brand href="/">
@@ -44,7 +44,7 @@ const NavBar= ({title}) => {
 
                 </Container>
             </Navbar>
-        </header>
+       
     )
 }
 

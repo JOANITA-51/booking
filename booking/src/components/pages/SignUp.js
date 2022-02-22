@@ -63,11 +63,11 @@ const SignUp=()=> {
   }
 
   return (
-    <div className='sign-up d-grid'>
+    <div className='sign-up'>
       <Formik>
    
-        <Container id='main-container' className=' mt-5' >
-          <h2 className='mb-4 mt-4 ms-4 fs-1'>Sign UP</h2>
+        <Container id='main-container'>
+          <h2 className='mb-4 pt-4 ms-4 fs-1'>Sign UP</h2>
           <h5 className='ms-4 fw-normal' >Please fill in this form to create an account</h5>
           <hr  />
           {/* <Form className='text-center' noValidate onSubmit={handleSubmit} method ='post' action='http://localhost:3003/register'> */}
@@ -120,7 +120,7 @@ const SignUp=()=> {
               <Form.Check  required name="term"  label='I accept the' /><Link className='me-2 ms-2' to = '/'>Terms Of Use </Link> and <Link className='ms-2' to = '/'> Privacy Policy </Link>
               
             </Form.Group>
-            <Button type='submit' className='ms-5 mb-3' id='SignUp' size='lg' >  Sign Up </Button> 
+            <Button type='submit' className='ms-5 mb-3 button1'  size='lg' >  Sign Up </Button> 
             
           </Form>
                   
