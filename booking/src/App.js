@@ -13,11 +13,11 @@ import EditBookNow from './components/pages/EditBookNow';
 import BookNowList from './components/pages/BookNowList';
 import Users from './components/pages/Users';
 import Success from './components/pages/Success'
+import Success2 from './components/pages/Success2';
 
 function App() {
   return (
-    <div className="App">
-      <Router>
+    <Router>
         <NavBar title = 'chotrix'/>
         <Routes>
          
@@ -32,11 +32,10 @@ function App() {
           <Route path="/list" element={<BookNowList/>} />
           <Route path="/users-list" element={<Users/>}/>
           <Route path="/success" element={<Success/>}/>
+          <Route path='/successful' element={<Success2/>} />
         </Routes>
-      </Router>
-     
-                
-    </div>
+    </Router>
+
   );
 }
 

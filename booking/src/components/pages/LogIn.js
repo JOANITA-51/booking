@@ -1,12 +1,13 @@
 import React from 'react';
 import { Container, Form, Button, FloatingLabel } from 'react-bootstrap';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import '../../App.css';
 import axios from 'axios';
 import { useState } from 'react';
 function Login() {
     const [profile, setProfile] = useState({})
     const [errorMessage, setErrorMessage] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit =(event)=>{
         event.preventDefault()
@@ -14,18 +15,18 @@ function Login() {
         axios.post('https://schotrix.herokuapp.com/login',profile)
         .then(response=>console.log(response.data))
         .catch(error =>setErrorMessage(error))
-
+        navigate('/successful')
     }
     
     
     return (
         <div className='log-in d-grid'>
             {errorMessage && (  <p className="error"> {errorMessage} </p>)}
-            <Container id='main-container' className='mt-5' >
+            <Container id='main-container' className='mt-5'  >
                 <h2 className='mb-4 mt-4 ms-5 fs-1'>Log In</h2>
                 <h5 className='ms-5 fw-normal' >Please Log in </h5>
                 <hr  />
-                <Form className='d-grid text-center' onSubmit = {handleSubmit} >
+                <Form  onSubmit = {handleSubmit} >
                 <FloatingLabel controlId="floatingInput"  label="Email address"  className="mb-3 ms-5 fs-5" >
                     <Form.Control type="email" name='email' placeholder="name@example.com" onChange={event=>{setProfile({...profile, email:event.target.value})}} required />
                 </FloatingLabel>

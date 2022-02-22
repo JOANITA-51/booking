@@ -6,13 +6,13 @@ import Steps from '../Steps'
 
 function Home() {
     return (
-        <div>
+        <>
           
           <Hero/>  
           <Features/>
           <Steps/>
           <Footer/>
-        </div>
+        </>
     )
 }
 

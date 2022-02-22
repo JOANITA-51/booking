@@ -8,7 +8,7 @@
 #main-container{
     background-color: #fff;
     height:90%;
-    width: 80%;
+    width: 85%;
 }
 
 .position-relative{
@@ -24,14 +24,15 @@ Form{
     background-color: #FFC629;
 }
 
-#floatingInput,#floatingPassword, #floatingInputGrid, #floatingSelect{
+/* #floatingInput,#floatingPassword, #floatingInputGrid, #floatingSelect{
     background-color: #C4C4C4;
-}
+} */
 
 .booking {
     background-color: #FFC629;
     color: #fff; 
-    width: 30%;
+    border-radius: 50px;
+    text-align:left;
 }
 
 Table{

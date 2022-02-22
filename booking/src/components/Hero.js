@@ -7,11 +7,10 @@ const Hero = () => {
         <div className="hero-container">
             <h1>The simpler way to make a school appointment</h1>
             <Link to="/sign-up" >
-                <Button id="SignUp" variant="outline-light" size="lg">Sign Up For Free</Button>
+                <Button id="BookNow2" variant="outline-light" size="lg">Get Started Booking</Button>
             </Link>
             <h5>
-                Already have an account?
-                <Link to='/login'>Login here</Link> 
+               Schedule and manage your appointments easily
             </h5>
             
            

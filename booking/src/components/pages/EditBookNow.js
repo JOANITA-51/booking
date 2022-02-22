@@ -83,7 +83,7 @@ const EditBookNow = () => {
                 url:`http://api.weatherapi.com/v1/forecast.json?key=4b35053d60374d68bd8133610212210&q=${city}&days=1&aqi=yes&alerts=yes`
             })
                 .then((response)=>{
-                    const {data:{location:{country, region, lon, lat }}} = response
+                    const {data:{location:{country,lon, lat }}} = response
                     const {data:{current:{temp_c, temp_f, condition:{text, icon, code}}}} =response
                     setWeatherInfo({country,lon,lat,temp_c,temp_f,text,icon,code})
                     
@@ -132,7 +132,7 @@ const EditBookNow = () => {
             >
             <h1>{city} Weather Information</h1> 
                 {new Date ().toLocaleString()} <br/>
-                {icon && <img src ={icon}/>}
+                {icon && <img src ={icon} alt=''/>}
                 {region}
                 {country}<br/>
                 {temp_c} &#8451; - {text}

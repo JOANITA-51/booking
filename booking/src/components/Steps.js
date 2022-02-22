@@ -56,8 +56,12 @@ function Steps() {
                 </Row>
                 <div className='text-center' >
                     <Link to="/sign-up" >
-                        <Button id="SignUp" variant="outline-light" size="lg">Get Started Booking</Button>
+                        <Button id="SignUp2" variant="outline-light" size="lg">Sign Up For Free</Button>
                     </Link>
+                    <h4>
+                     Already have an account?
+                        <Link to='/log-in'>Login here</Link> 
+                    </h4>
                 </div>
 
             </Container>

@@ -2,6 +2,20 @@
     background-color:#03035B;
 }
 
-#SignUp{
+#SignUp,
+#BookNow,
+#LogIn2{
+    width: 130px;
+    height: 40px;
+}
+.home{
+    text-decoration: none;
+    color: #ffff;
+}
+
+#BookNow{
     background-color: #FFC629;
 }
+
+
+
