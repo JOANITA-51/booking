@@ -27,7 +27,7 @@ function Login() {
         '>
                     <h2 className='mb-4 pt-4 ms-5 fs-1'>Log In</h2>
                     <h5 className='ms-5 fw-normal' >Please Log in </h5>
-                    <hr  />
+                    <hr className='mb-5' />
                     <Form  onSubmit = {handleSubmit} className='login_tab_top_wrap float_left' >
                     <FloatingLabel  label="Email address"  className="mb-3 ms-5 fs-5" >
                         <Form.Control type="email" name='email' placeholder="name@example.com" onChange={event=>{setProfile({...profile, email:event.target.value})}} required />

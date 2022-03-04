@@ -7,14 +7,21 @@
 #LogIn2{
     width: 130px;
     height: 40px;
+    transition: 0.6s ease;
 }
 .home{
     text-decoration: none;
     color: #ffff;
+    
 }
 
 #BookNow{
-    background-color: #FFC629;
+    background-color: #2ec8a6;;
+    transition: 0.6s ease;
+}
+#BookNow:hover{
+    background-color: #ffff;
+    color: #000000;
 }
 
 

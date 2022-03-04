@@ -71,8 +71,8 @@ const SignUp=()=> {
           <div  className='align-items-center justify-content-center container3 mt-5
         '>
           <h2 className='mb-4 pt-5 ms-4 fs-1'>Sign UP</h2>
-          <h5 className='ms-4 fw-normal'  >Please fill in this form to create an account</h5>
-          <hr  />
+          <h5 className='ms-4 fw-normal' >Please fill in this form to create an account</h5>
+          <hr className='mb-5' />
             <Form className='text-center' onSubmit={handleSubmit(onFormSubmit)}>
               <Row className="g-2">
                 <Col md>
