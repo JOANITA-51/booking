@@ -63,7 +63,7 @@ const SignUp=()=> {
   }
 
   return (
-    <div className='sign-up'>
+    <div className='sign-up pt-5 pb-5'>
       <Formik>
      
         <Container >

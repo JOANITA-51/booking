@@ -45,6 +45,20 @@ Form{
     color: #000000;
 }
 
+.info{
+    background-color: #63b3f5;
+    transition: all 0.5s;
+    border-radius: 50px ;
+    font-weight: 600;
+    text-align:center;
+    line-height: 47px;
+}
+
+.info:hover{
+    background-color: #fff;
+    color: #000000;
+}
+
 Table{
     width : 100%
 }
