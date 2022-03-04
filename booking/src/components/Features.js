@@ -4,9 +4,9 @@ import {Container, Row, Col} from 'react-bootstrap'
 
 function Features() {
     return (
-        <div className='features'>
+   
+            <Container className='features'>
             <h1>Schotrix is a school appointment booking system for everyone to make an online school appointment</h1>
-            <Container>
                 <Row>
                     <Col>
                         <FeatureItem                        
@@ -66,7 +66,7 @@ function Features() {
                 </Row>
           </Container>
            
-        </div>
+
     )
 }
 

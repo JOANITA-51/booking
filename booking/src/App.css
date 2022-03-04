@@ -29,10 +29,20 @@ Form{
 } */
 
 .button1 {
-    background-color: #FFC629;
+    background-color: #2ec8a6;;
     color: #fff; 
     border-radius: 50px;
-    text-align:left;
+    text-align:center;
+    transition: all 0.5s;
+    border: 2px solid #2ec8a6;
+    font-weight: 600;
+    
+}
+
+.button1:hover{
+    background-color: #fff;
+    border: 2px solid #2ec8a6;
+    color: #000000;
 }
 
 Table{
@@ -56,4 +66,8 @@ button{
     color:#3c763d;
     background-color: #dff0d8;
     border-color: #d6e9c6;
+}
+
+.container3{
+    background-color: #fff;
 }

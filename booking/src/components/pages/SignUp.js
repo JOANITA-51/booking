@@ -65,64 +65,70 @@ const SignUp=()=> {
   return (
     <div className='sign-up'>
       <Formik>
-   
-        <Container id='main-container'>
-          <h2 className='mb-4 pt-4 ms-4 fs-1'>Sign UP</h2>
-          <h5 className='ms-4 fw-normal' >Please fill in this form to create an account</h5>
-          <hr  />
-          {/* <Form className='text-center' noValidate onSubmit={handleSubmit} method ='post' action='http://localhost:3003/register'> */}
-          <Form className='text-center' onSubmit={handleSubmit(onFormSubmit)}>
-            <Row className="g-2">
-              <Col md>
-                <Form.Group >
-                  <FloatingLabel controlId="floatingInputGrid" label="First name" className="mb-3 ms-5 fs-5">
-                    <Form.Control type="text" name ="firstName"  onChange={ event=> {setDetails({...details,firstName:event.target.value})}} required  />
-                  </FloatingLabel>
-                 
-                </Form.Group>
-                
-              </Col>
-              <Col md>
-                <Form.Group >
-                  <FloatingLabel controlId="floatingInputGrid" label="Last name" className="mb-3 ms-5 fs-5">
-                    <Form.Control type="text" name="lastName"  onChange={ event=> {setDetails({...details,lastName:event.target.value})}} required />
-                  </FloatingLabel>
-                  
-                </Form.Group>
-
-              </Col>
-            </Row>
-
-            <Form.Group >
-              <FloatingLabel controlId="floatingInput"  label="Email address"  className="mb-3 ms-5 fs-5" >
-                <Form.Control type="email" name="email"  onChange={(event) => {setDetails({...details,email:event.target.value})}} required />
-              </FloatingLabel>
-              
-            </Form.Group>
-
-            <Form.Group >
-              <FloatingLabel controlId="floatingPassword" label="Password" className='ms-5 mb-4 fs-5' >
-                <Form.Control type="password" name="password" {...register('password')} onChange={(event)=> {setDetails({...details,password:event.target.value})}}  required
-                className={`form-control ${errors.password ? 'is-invalid' : ''}`} />
-                    <div className="invalid-feedback">{errors.password?.message}</div>
+     
+        <Container >
           
+          <div  className='align-items-center justify-content-center container3 mt-5
+        '>
+          <h2 className='mb-4 pt-5 ms-4 fs-1'>Sign UP</h2>
+          <h5 className='ms-4 fw-normal'  >Please fill in this form to create an account</h5>
+          <hr  />
+            <Form className='text-center' onSubmit={handleSubmit(onFormSubmit)}>
+              <Row className="g-2">
+                <Col md>
+                  <Form.Group >
+                    <FloatingLabel controlId="floatingInputGrid" label="First name" className="mb-3 ms-5 fs-5">
+                      <Form.Control type="text" name ="firstName"  onChange={ event=> {setDetails({...details,firstName:event.target.value})}} required  />
+                    </FloatingLabel>
+                  
+                  </Form.Group>
+                  
+                </Col>
+                <Col md>
+                  <Form.Group >
+                    <FloatingLabel controlId="floatingInputGrid" label="Last name" className="mb-3 ms-5 fs-5">
+                      <Form.Control type="text" name="lastName"  onChange={ event=> {setDetails({...details,lastName:event.target.value})}} required />
+                    </FloatingLabel>
+                    
+                  </Form.Group>
+
+                </Col>
+              </Row>
+
+              <Form.Group >
+                <FloatingLabel controlId="floatingInput"  label="Email address"  className="mb-3 ms-5 fs-5" >
+                  <Form.Control type="email" name="email"  onChange={(event) => {setDetails({...details,email:event.target.value})}} required />
+                </FloatingLabel>
+                
+              </Form.Group>
+
+              <Form.Group >
+                <FloatingLabel controlId="floatingPassword" label="Password" className='ms-5 mb-4 fs-5' >
+                  <Form.Control type="password" name="password" {...register('password')} onChange={(event)=> {setDetails({...details,password:event.target.value})}}  required
+                  className={`form-control ${errors.password ? 'is-invalid' : ''}`} />
+                      <div className="invalid-feedback">{errors.password?.message}</div>
+            
+                </FloatingLabel>
+                
+              </Form.Group>
+
+              <FloatingLabel controlId="floatingPassword" label="Confirm Password" className='ms-5 mb-4 fs-5' >
+                <Form.Control type="password" name=" passwordConfirm" {...register('passwordConfirm')}   className={`form-control ${ errors.passwordConfirm ? 'is-invalid' : ''}`}/>
               </FloatingLabel>
+              <div className="invalid-feedback"> {errors.passwordConfirm?.message}</div>
               
-            </Form.Group>
 
-            <FloatingLabel controlId="floatingPassword" label="Confirm Password" className='ms-5 mb-4 fs-5' >
-              <Form.Control type="password" name=" passwordConfirm" {...register('passwordConfirm')}   className={`form-control ${ errors.passwordConfirm ? 'is-invalid' : ''}`}/>
-            </FloatingLabel>
-            <div className="invalid-feedback"> {errors.passwordConfirm?.message}</div>
-            
-
-            <Form.Group className='d-flex mb-4 ms-5 fs-5' controlId='remember-me'>
-              <Form.Check  required name="term"  label='I accept the' /><Link className='me-2 ms-2' to = '/'>Terms Of Use </Link> and <Link className='ms-2' to = '/'> Privacy Policy </Link>
+              <Form.Group className='d-flex mb-4 ms-5 fs-5' controlId='remember-me'>
+                <Form.Check  required name="term"  label='I accept the' /><Link className='me-2 ms-2' to = '/'>Terms Of Use </Link> and <Link className='ms-2' to = '/'> Privacy Policy </Link>
+                
+              </Form.Group>
               
-            </Form.Group>
-            <Button type='submit' className='ms-5 mb-3 button1'  size='lg' >  Sign Up </Button> 
-            
-          </Form>
+              
+            </Form>
+            <Button type='submit' className='ms-5 mb-3 button1'  size='lg'  style={{ width: '10rem' }}>  Sign Up </Button> 
+          </div>
+          {/* <Form className='text-center' noValidate onSubmit={handleSubmit} method ='post' action='http://localhost:3003/register'> */}
+ 
                   
         </Container>
          

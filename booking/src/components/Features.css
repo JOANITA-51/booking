@@ -17,6 +17,19 @@ h1 {
 
 .features {
     padding: 2rem;
-    background: #fff;
+    background: #ffffff;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.row{
+    margin-left: 0;
+    margin-right: 0;
+}
+
+@media only screen and (max-width: 300px) {
+  
+    .features__item__img{
+        width: 90%;
+    }
+
 }

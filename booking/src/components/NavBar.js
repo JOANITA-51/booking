@@ -8,16 +8,16 @@ const NavBar= ({title}) => {
     return (
         
         
-            <Navbar  variant="dark" expand="lg" className="bg-blue">
-                <Container>
+            <Container >
+                <Navbar  variant="dark" expand="lg" className="bg-blue" fixed="top">
                     <Navbar.Brand href="/">
                     <img alt="" src="/image/logo-image.ico" height="35px" className="d-inline-block align-top" />
                     {title}.com
                         
                     </Navbar.Brand>
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Toggle aria-controls="responsive-navbar-nav" className = 'me-3'/>
 
-                    <Navbar.Collapse id="basic-navbar-nav"className="justify-content-center">
+                    <Navbar.Collapse id="responsive-navbar-nav"className="justify-content-center ms-2 ">
                         <Nav >
                             <Nav.Link><Link to = '/'className="home"> Home</Link></Nav.Link>
                             <Nav.Link><Link to = '/features'className="home"> Features</Link></Nav.Link>
@@ -30,7 +30,7 @@ const NavBar= ({title}) => {
                             </NavDropdown> */}
                         </Nav>
                     </Navbar.Collapse>
-                    <Navbar.Collapse  id="basic-navbar-nav" className="justify-content-end">
+                    <Navbar.Collapse  id="basic-navbar-nav" className="justify-content-end ms-2">
                         <Nav >
                         <Nav.Link><Link to="/book-now"><Button id = 'BookNow'variant="outline-light" >Book Now</Button></Link> </Nav.Link>
                         <Nav.Link > <Link to="/log-in"><Button id = 'LogIn2' variant="outline-light" >Log In</Button></Link> </Nav.Link>
@@ -42,8 +42,8 @@ const NavBar= ({title}) => {
 
 
 
-                </Container>
-            </Navbar>
+                </Navbar>
+            </Container>
        
     )
 }

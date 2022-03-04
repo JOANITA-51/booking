@@ -4,13 +4,13 @@ import './Footer.css';
 
 function Footer() {
     return (
-        <div className='footer  text-center py-3'>
-            <Row>
+       
+            <Row className='footer  text-center py-3'>
                 <Col xs={6}>&copy; {new Date().getFullYear()} Copyright </Col>
                 <Col>Privacy Policy</Col>
                 <Col>Terms of Use</Col>
             </Row>
-        </div>
+        
     )
 }
 
